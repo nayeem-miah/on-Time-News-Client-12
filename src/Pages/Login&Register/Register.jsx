@@ -81,7 +81,9 @@ const Register = () => {
           </p>
 
           <div className="flex cursor-pointer items-center justify-center mt-4 text-gray-600 transition-colors duration-300 transform border rounded-lg   hover:bg-gray-50 ">
-          <Helmet><title>OnTimeNews | Register Page </title> </Helmet>
+            <Helmet>
+              <title>OnTimeNews | Register Page </title>{" "}
+            </Helmet>
             <div className="px-4 py-2">
               <svg className="w-6 h-6" viewBox="0 0 40 40">
                 <path
@@ -132,6 +134,7 @@ const Register = () => {
                 id="name"
                 autoComplete="name"
                 name="name"
+                placeholder="Your name"
                 className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg    focus:border-blue-400 focus:ring-opacity-40  focus:outline-none focus:ring focus:ring-blue-300"
                 type="text"
                 required
@@ -148,6 +151,7 @@ const Register = () => {
                 id="photo"
                 autoComplete="photo"
                 name="photo"
+                placeholder="Photo Url"
                 className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg    focus:border-blue-400 focus:ring-opacity-40  focus:outline-none focus:ring focus:ring-blue-300"
                 type="text"
                 required
@@ -161,6 +165,7 @@ const Register = () => {
                 id="LoggingEmailAddress"
                 autoComplete="email"
                 name="email"
+                placeholder="email "
                 className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg    focus:border-blue-400 focus:ring-opacity-40  focus:outline-none focus:ring focus:ring-blue-300"
                 type="email"
                 required
@@ -176,7 +181,7 @@ const Register = () => {
               <div className="relative mb-4">
                 <input
                   type={showPassword ? "text" : "password"}
-                  placeholder="password"
+                  placeholder="********"
                   name="password"
                   className="input input-bordered block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg    focus:border-blue-400 focus:ring-opacity-40  focus:outline-none focus:ring focus:ring-blue-300"
                   required

@@ -8,6 +8,7 @@ import Dashboard from "../Pages/Dashboard/Dashboard";
 import Login from "../Pages/Login&Register/Login";
 import Register from "../Pages/Login&Register/Register";
 import ErrorPages from "../Compoents/ErrorPage";
+import PrivetRouts from "./PrivetRoute/PrivetRoute";
 
 const router = createBrowserRouter([
   {
@@ -22,7 +23,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/addArticles",
-        element: <AddArticles></AddArticles>,
+        element: (
+          <PrivetRouts>
+            <AddArticles></AddArticles>
+          </PrivetRouts>
+        ),
       },
       {
         path: "/allArticles",

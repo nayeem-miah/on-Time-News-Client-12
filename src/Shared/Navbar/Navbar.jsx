@@ -103,15 +103,15 @@ const Navbar = () => {
       <div className="navbar-end">
         <div className="relative md:border-l flex items-center  justify-end w-full md:w-auto pl-3 ">
           <div className=" w-[50px]"></div>
-          {/* {!user && (
+          {!user && (
             <button className="border-2 p-1 text-white bg-[#FF497C] rounded border-[#FF497C] mr-5">
               <NavLink to="/register">Register</NavLink>
             </button>
-          )} */}
+          )}
           {user ? (
             <button
               onClick={() => setOpen(!open)}
-              className="border-2 border-[#FF497C] rounded-full w-[40px]"
+              className="border-2 border-[#f0084a] rounded-full w-[40px]"
             >
               <img
                 src={user?.photoURL}
