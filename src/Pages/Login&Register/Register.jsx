@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { IoEye } from "react-icons/io5";
 import { BsEyeSlashFill } from "react-icons/bs";
+import { Helmet } from "react-helmet-async";
 const Register = () => {
   const { createUser, googleLogin } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
@@ -80,6 +81,7 @@ const Register = () => {
           </p>
 
           <div className="flex cursor-pointer items-center justify-center mt-4 text-gray-600 transition-colors duration-300 transform border rounded-lg   hover:bg-gray-50 ">
+          <Helmet><title>OnTimeNews | Register Page </title> </Helmet>
             <div className="px-4 py-2">
               <svg className="w-6 h-6" viewBox="0 0 40 40">
                 <path

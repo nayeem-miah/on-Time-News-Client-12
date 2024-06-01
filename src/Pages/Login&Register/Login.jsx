@@ -2,6 +2,7 @@ import { useState } from "react";
 import useAuth from "../../Hooks/useAuth";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
   const { logIn, googleLogin } = useAuth();
@@ -11,7 +12,7 @@ const Login = () => {
   const [success, setSuccess] = useState("");
   const location = useLocation();
   const navigate = useNavigate();
-
+console.log(success);
   const handleLOgin = e => {
     e.preventDefault();
     const form = e.target;
@@ -47,6 +48,7 @@ const Login = () => {
   };
   return (
     <div className="flex my-10 justify-center items-center min-h-[calc(100vh-306px)]">
+      <Helmet><title>OnTimeNews | Login Page </title> </Helmet>
       <div className="flex w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg  lg:max-w-4xl ">
    
         <div className="w-full px-6 py-8 md:px-8 lg:w-2/3 mx-auto">
