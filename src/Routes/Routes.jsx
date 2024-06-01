@@ -7,11 +7,14 @@ import Subscription from "../Pages/Subscription/Subscription";
 import Dashboard from "../Pages/Dashboard/Dashboard";
 import Login from "../Pages/Login&Register/Login";
 import Register from "../Pages/Login&Register/Register";
+import ErrorPages from "../Compoents/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement: <ErrorPages></ErrorPages>,
+
     children: [
       {
         path: "/",
@@ -29,7 +32,7 @@ const router = createBrowserRouter([
         path: "/subscription",
         element: <Subscription></Subscription>,
       },
-    //   admin 
+      //   admin
       {
         path: "/dashboard",
         element: <Dashboard></Dashboard>,

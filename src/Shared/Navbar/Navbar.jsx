@@ -1,29 +1,31 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Typewriter } from "react-simple-typewriter";
+import useAuth from "../../Hooks/useAuth";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
-  //   const { logout, user } = useAuth();
+  const { logout, user } = useAuth();
   const [open, setOpen] = useState();
-  const [user, logOut] = useState();
-  //   const handleLogout = () => {
-  //     logout()
-  //   // eslint-disable-next-line no-unused-vars
-  //   .then(result => {
-  //     Swal.fire({
-  //       position: "top-center",
-  //       icon: "success",
-  //       title: "logOut successful",
-  //       showConfirmButton: false,
-  //       timer: 2000,
-  //     });
-  //     // console.log(result.user);
-  //   })
-  //   .catch(error => {
-  //     console.error(error);
-  //     setOpen(false);
-  //   });
-  //   };
+
+  const handleLogout = () => {
+    logout()
+  
+      .then(result => {
+        Swal.fire({
+          position: "top-center",
+          icon: "success",
+          title: "logOut successful",
+          showConfirmButton: false,
+          timer: 2000,
+        });
+        console.log(result.user);
+      })
+      .catch(error => {
+        console.error(error);
+        setOpen(false);
+      });
+  };
 
   const nabLinks = (
     <>
@@ -83,7 +85,7 @@ const Navbar = () => {
             {nabLinks}
           </ul>
         </div>
-        <Link to={'/'} className="text-xl lg:text-2xl text-green-600">
+        <Link to={"/"} className="text-xl lg:text-2xl text-green-600">
           <Typewriter
             words={["OnTimeNews"]}
             loop={Infinity}
@@ -135,7 +137,7 @@ const Navbar = () => {
             <p className="text-lg font-semibold">{user?.email}</p>
 
             <button
-              //   onClick={() => handleLogout()}
+                onClick={() => handleLogout()}
               className="bg-[#FF497C] hover:bg-[#ab3154] duration-200 text-white font-bold px-4 xl:px-6 py-1 rounded cursor-pointer"
             >
               logout
