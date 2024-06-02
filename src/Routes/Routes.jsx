@@ -9,6 +9,7 @@ import Login from "../Pages/Login&Register/Login";
 import Register from "../Pages/Login&Register/Register";
 import ErrorPages from "../Compoents/ErrorPage";
 import PrivetRouts from "./PrivetRoute/PrivetRoute";
+import ArticlesDetails from "../Pages/AllArticles/ArticlesDetails";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,15 @@ const router = createBrowserRouter([
       {
         path: "/allArticles",
         element: <AllArticles></AllArticles>,
+      },
+      {
+        path: "/articlesDetails/:id",
+        element: (
+          <PrivetRouts>
+            <ArticlesDetails></ArticlesDetails>
+          </PrivetRouts>
+        ),
+        loader:({params})=> fetch(`http://localhost:5000/articles/${params.id}`)
       },
       {
         path: "/subscription",
