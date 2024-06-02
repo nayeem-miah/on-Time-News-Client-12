@@ -1,17 +1,49 @@
 import axios from "axios";
+import { useState } from "react";
 
+import Select from "react-select";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import toast from "react-hot-toast";
+
+// Newspaper tags
+const tagOptions = [
+  { value: "politics", label: "Politics" },
+  { value: "world", label: "World" },
+  { value: "local", label: "Local" },
+  { value: "economy", label: "Economy" },
+  { value: "business", label: "Business" },
+//   { value: "technology", label: "Technology" },
+//   { value: "science", label: "Science" },
+//   { value: "health", label: "Health" },
+//   { value: "education", label: "Education" },
+//   { value: "sports", label: "Sports" },
+//   { value: "entertainment", label: "Entertainment" },
+//   { value: "lifestyle", label: "Lifestyle" },
+//   { value: "travel", label: "Travel" },
+//   { value: "food", label: "Food" },
+//   { value: "culture", label: "Culture" },
+//   { value: "opinion", label: "Opinion" },
+//   { value: "editorial", label: "Editorial" },
+
+  { value: "history", label: "History" },
+  { value: "breaking-news", label: "Breaking News" },
+];
 const AddArticles = () => {
+  const axiosSecure = useAxiosSecure();
+  const [selectedOption, setSelectedOption] = useState(null);
+  // const [tags, setTags] = useState([]);
   const handleSubmit = async e => {
     e.preventDefault();
     const form = e.target;
     const title = form.title.value;
     const publisher = form.publisher.value;
-    const tags = form.tags.value;
+    // const tags = form.tags.value;
     const description = form.description.value;
     const image = form.image.files[0];
-    console.log({ title, publisher, tags, description, image });
+    // console.log({ title, publisher,  description, image });
     const formData = new FormData();
     formData.append("image", image);
+    // formData.append("tags", JSON.stringify(tags.map(tag => tag.value)));
     try {
       const { data } = await axios.post(
         `https://api.imgbb.com/1/upload?key=${
@@ -19,7 +51,18 @@ const AddArticles = () => {
         }`,
         formData
       );
-      console.log(data.data.display_url);
+      if(data.success){
+        const newData = { title, publisher,  description, image: data.data.display_url }
+        // post data database
+        console.log(newData);
+
+        const res= await axiosSecure.post('/articles',newData);
+        if(res.data.insertedId){
+          toast.success(`${title} data Added successfully`)
+          form.reset();
+        }
+      }
+     
     } catch (err) {
       console.log(err);
     }
@@ -58,13 +101,17 @@ const AddArticles = () => {
           </div>
 
           <div>
-            <label className="text-gray-700 dark:text-gray-200">Tags</label>
-            <input
-              type="text"
-              name="tags"
-              placeholder="tags"
-              required
-              className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+            <label className=" ">Tags</label>
+
+            <Select
+              defaultValue={selectedOption}
+              isMulti
+              name="colors"
+              onChange={setSelectedOption}
+              options={tagOptions}
+              className="basic-multi-select text-black  bg-green-600"
+              classNamePrefix="select"
+              // onInputChange={setTags}
             />
           </div>
 
@@ -75,7 +122,7 @@ const AddArticles = () => {
             <input
               type="file"
               name="image"
-              className="file-input mt-2 h-10 file-input-bordered file-input-error w-full max-w-full items-center  text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+              className="file-input  h-10 file-input-bordered file-input-error w-full max-w-full items-center  text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
             />
           </div>
         </div>
@@ -92,7 +139,7 @@ const AddArticles = () => {
           />
         </div>
         <div className="mt-6 w-full">
-          <button className="px-8 py-2.5 leading-5 text-white  w-full transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">
+          <button className="px-8 py-3 leading-5 text-white  w-full transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">
             Submit
           </button>
         </div>
