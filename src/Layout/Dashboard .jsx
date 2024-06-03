@@ -17,7 +17,7 @@ const Dashboard = () => {
     <div>
       <Navbar></Navbar>
       {/* dashBoard content  */}
-      <div className="flex">
+      <div className="flex ">
         <div className="w-64 drawer lg:drawer-open min-h-screen bg-purple-500">
           <ul className="menu text-black font-bold p-4">
             {
@@ -97,7 +97,7 @@ const Dashboard = () => {
             </li>
 
             <li>
-              <NavLink to={"/order/contact"}>
+              <p>
                 {user && (
                   <img
                     src={user?.photoURL}
@@ -105,7 +105,7 @@ const Dashboard = () => {
                   />
                 )}
                 Admin Profile
-              </NavLink>
+              </p>
             </li>
           </ul>
           {/* sidebar content */}

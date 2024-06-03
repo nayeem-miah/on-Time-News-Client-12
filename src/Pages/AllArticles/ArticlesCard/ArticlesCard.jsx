@@ -5,7 +5,7 @@ const ArticlesCard = ({ articles }) => {
   return (
     <div className="w-full max-w-sm overflow-hidden bg-white rounded-lg  dark:bg-gray-800 shadow-2xl hover:scale-105">
       <img
-        className="object-cover object-center w-full h-56"
+        className="object-cover object-center w-full h-48"
         src={articles.image}
       />
       <div className="flex items-center px-6 py-3 bg-gray-900">

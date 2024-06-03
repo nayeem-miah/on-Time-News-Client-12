@@ -74,17 +74,49 @@ const AddArticles = () => {
             />
           </div>
 
-          <div>
-            <label className="text-gray-700 dark:text-gray-200">
-              publisher
+          <div className="">
+            <label
+              className="text-gray-700 dark:text-gray-200"
+              htmlFor="category"
+            >
+              Select publisher
             </label>
-            <input
+            <select
               type="text"
-              name="publisher"
-              placeholder="publisher"
-              required
               className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
-            />
+              placeholder="select publisher"
+              name="publisher"
+              required
+            >
+              <option value="The New York Times (USA)">
+                The New York Times (USA)
+              </option>
+              <option value="The Washington Post (USA)">
+                The Washington Post (USA)
+              </option>
+              <option value="The Guardian (UK)">The Guardian (UK)</option>
+              <option value="The Wall Street Journal (USA)">
+                The Wall Street Journal (USA)
+              </option>
+              <option value="Los Angeles Times (USA)">
+                Los Angeles Times (USA)
+              </option>
+              <option value="Chicago Tribune (USA)">
+                Chicago Tribune (USA)
+              </option>
+              <option value="USA Today (USA)">USA Today (USA)</option>
+              <option value="The Times of India (India)">
+                The Times of India (India)
+              </option>
+              <option value="The Sydney Morning Herald (Australia)">
+                The Sydney Morning Herald (Australia)
+              </option>
+              <option value="The Daily Telegraph (UK)">
+                The Daily Telegraph (UK)
+              </option>
+              <option value="Le Monde (France)">Le Monde (France)</option>
+              <option value="El País (Spain)">El País (Spain)</option>
+            </select>
           </div>
 
           <div className="">
@@ -125,7 +157,7 @@ const AddArticles = () => {
             </select>
           </div>
 
-          <div>
+          <div className="mt-2">
             <label className="text-gray-700 dark:text-gray-200 ">
               Chose Image
             </label>
