@@ -69,7 +69,7 @@ const Register = () => {
         console.error(error);
       });
   };
-  // if(user || loading) return <Navigate to={'/'}></Navigate>;
+  
   return (
     <div className="flex justify-center items-center  my-10">
       <div className="flex w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg  lg:max-w-4xl ">

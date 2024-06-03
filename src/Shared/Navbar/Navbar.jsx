@@ -3,14 +3,13 @@ import { Link, NavLink } from "react-router-dom";
 import { Typewriter } from "react-simple-typewriter";
 import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
-
+import { FaEdit } from "react-icons/fa";
 const Navbar = () => {
   const { logout, user } = useAuth();
   const [open, setOpen] = useState();
 
   const handleLogout = () => {
     logout()
-  
       .then(result => {
         Swal.fire({
           position: "top-center",
@@ -133,11 +132,19 @@ const Navbar = () => {
               open ? "block" : "hidden"
             } flex flex-col justify-center items-center gap-4  shadow-lg bg-white dark:bg-[#120505] px-8 py-4 top-16 dark:text-white z-50`}
           >
-            <p className="text-lg font-semibold">{user?.displayName}</p>
+            <div className="flex justify-between items-center">
+              <p className="text-lg font-semibold mr-4">{user?.displayName}</p>
+              <p>
+            
+                <Link to={"/updateUserProfile"}>
+                  <FaEdit className="text-xl"></FaEdit>
+                </Link>
+              </p>
+            </div>
             <p className="text-lg font-semibold">{user?.email}</p>
 
             <button
-                onClick={() => handleLogout()}
+              onClick={() => handleLogout()}
               className="bg-[#FF497C] hover:bg-[#ab3154] duration-200 text-white font-bold px-4 xl:px-6 py-1 rounded cursor-pointer"
             >
               logout

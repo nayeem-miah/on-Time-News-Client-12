@@ -14,6 +14,7 @@ import Dashboard from "../Layout/Dashboard ";
 import AdminHome from "../Pages/Dashboard/AdminHome/AdminHome";
 import AllUsers from "../Pages/Dashboard/AllUsers/AllUsers";
 import AddPublisher from "../Pages/Dashboard/AddPublisher/AddPublisher";
+import UpdateUserProfile from "../Pages/Login&Register/updateUserProfile";
 
 
 const router = createBrowserRouter([
@@ -60,6 +61,10 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register></Register>,
+      },
+      {
+        path: "/updateUserProfile",
+        element: <UpdateUserProfile></UpdateUserProfile>,
       },
     ],
   },
