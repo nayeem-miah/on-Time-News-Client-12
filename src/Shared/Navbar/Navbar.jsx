@@ -4,9 +4,11 @@ import { Typewriter } from "react-simple-typewriter";
 import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
 import { FaEdit } from "react-icons/fa";
+import useAdmin from "../../Hooks/useAdmin";
 const Navbar = () => {
   const { logout, user } = useAuth();
   const [open, setOpen] = useState();
+  const [isAdmin] = useAdmin();
 
   const handleLogout = () => {
     logout()
@@ -43,7 +45,7 @@ const Navbar = () => {
       </li>
       {/*  (this will be conditional show only if user is admin) */}
       <span>
-        {user && (
+        {isAdmin && (
           <li>
             <NavLink to="/dashboard">Dashboard</NavLink>
           </li>
@@ -103,7 +105,7 @@ const Navbar = () => {
         <div className="relative md:border-l flex items-center  justify-end w-full md:w-auto pl-3 ">
           <div className=" w-[50px]"></div>
           {!user && (
-            <button className="border-2 p-1 text-white bg-[#FF497C] rounded border-[#FF497C] mr-5">
+            <button className=" font-bold hover:border-b-green-700 p-1 text-white bg-purple-500 hover:bg-purple-700 rounded mr-5">
               <NavLink to="/register">Register</NavLink>
             </button>
           )}
@@ -121,7 +123,7 @@ const Navbar = () => {
           ) : (
             <Link
               to={"/login"}
-              className="bg-[#FF497C] hover:bg-[#ab3154]  duration-200 text-white font-bold px-4 xl:px-6 py-1 rounded"
+              className="bg-purple-500 hover:bg-purple-700  duration-200 text-white font-bold px-4 xl:px-6 py-1 rounded"
             >
               Login
             </Link>
@@ -132,23 +134,39 @@ const Navbar = () => {
               open ? "block" : "hidden"
             } flex flex-col justify-center items-center gap-4  shadow-lg bg-white dark:bg-[#120505] px-8 py-4 top-16 dark:text-white z-50`}
           >
+            <img
+              src={user?.photoURL}
+              className="w-32 h-32 mx-auto rounded-full dark:bg-gray-500 aspect-square"
+            />
             <div className="flex justify-between items-center">
               <p className="text-lg font-semibold mr-4">{user?.displayName}</p>
               <p>
-            
                 <Link to={"/updateUserProfile"}>
                   <FaEdit className="text-xl"></FaEdit>
                 </Link>
               </p>
             </div>
-            <p className="text-lg font-semibold">{user?.email}</p>
 
-            <button
-              onClick={() => handleLogout()}
-              className="bg-[#FF497C] hover:bg-[#ab3154] duration-200 text-white font-bold px-4 xl:px-6 py-1 rounded cursor-pointer"
-            >
-              logout
-            </button>
+            <p className="text-lg font-semibold">{user?.email}</p>
+            <div className="flex justify-between gap-6">
+              <button>
+                {isAdmin ? (
+                  <p className="p-2 px-4 text-xs font-bold text-white bg-purple-500 rounded">
+                    Admin
+                  </p>
+                ) : (
+                  <p className="p-2 px-4 text-xs font-bold text-white bg-purple-500 rounded">
+                    normal user
+                  </p>
+                )}
+              </button>
+              <button
+                onClick={() => handleLogout()}
+                className="bg-purple-500 hover:bg-purple-900 duration-200 text-white font-bold px-4 xl:px-6 py-1 rounded cursor-pointer"
+              >
+                logout
+              </button>
+            </div>
           </div>
         </div>
       </div>

@@ -7,12 +7,12 @@ import {
 import { NavLink, Outlet } from "react-router-dom";
 import Navbar from "../Shared/Navbar/Navbar";
 import useAuth from "../Hooks/useAuth";
+import useAdmin from "../Hooks/useAdmin";
 
 const Dashboard = () => {
   const { user } = useAuth();
-  // done : get isAdmin value from database
-  // const [isAdmin] = useAdmin();
-  const isAdmin = true;
+  const [isAdmin] = useAdmin();
+
   return (
     <div>
       <Navbar></Navbar>
@@ -20,72 +20,37 @@ const Dashboard = () => {
       <div className="flex ">
         <div className="w-64 drawer lg:drawer-open min-h-screen bg-purple-500">
           <ul className="menu text-black font-bold p-4">
-            {
-              isAdmin && (
-                <>
-                  <li>
-                    <NavLink to={"/dashboard/adminHome"}>
-                      <FaHouseMedical></FaHouseMedical>
-                      Admin Home
-                    </NavLink>
-                  </li>
+            {isAdmin && (
+              <>
+                <li>
+                  <NavLink to={"/dashboard/adminHome"}>
+                    <FaHouseMedical></FaHouseMedical>
+                    Admin Home
+                  </NavLink>
+                </li>
 
-                  <li>
-                    <NavLink to={"/dashboard/users"}>
-                      <FaUsers></FaUsers>
-                      All Users
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink to={"/allArticles"}>
-                      <FaRegNewspaper></FaRegNewspaper>
-                      All Articles
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink to={"/dashboard/allPublisher"}>
-                      <FaGalacticRepublic></FaGalacticRepublic>
-                      Add Publisher
-                    </NavLink>
-                  </li>
-                </>
-              )
-              //  : (
-              //   <>
-              //     <li>
-              //       <NavLink to={"/dashboard/userHome"}>
-              //         <FaHouseMedical></FaHouseMedical>
-              //         user Home
-              //       </NavLink>
-              //     </li>
-              //     {/* <li>
-              //       <NavLink to={"/dashboard/history"}>
-              //         <FaCalendar></FaCalendar>
-              //         payment History
-              //       </NavLink>
-              //     </li> */}
-              //     <li>
-              //       <NavLink to={"/dashboard/cart"}>
-              //         <FaCartShopping></FaCartShopping>
-              //         My Cart
-              //       </NavLink>
-              //     </li>
-              //     <li>
-              //       <NavLink to={"/dashboard/review"}>
-              //         <FaAddressCard></FaAddressCard>
-              //         Add a Review
-              //       </NavLink>
-              //     </li>
-              //     <li>
-              //       <NavLink to={"/dashboard/paymentHistory"}>
-              //         <FaList></FaList>
-              //         real payment History
-              //       </NavLink>
-              //     </li>
-              //   </>
-              // )
-            }
+                <li>
+                  <NavLink to={"/dashboard/users"}>
+                    <FaUsers></FaUsers>
+                    All Users
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to={"/allArticles"}>
+                    <FaRegNewspaper></FaRegNewspaper>
+                    All Articles
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to={"/dashboard/allPublisher"}>
+                    <FaGalacticRepublic></FaGalacticRepublic>
+                    Add Publisher
+                  </NavLink>
+                </li>
+              </>
+            )}
             {/* shared nav links */}
+
             <div className="divider "></div>
             <div className="divider "></div>
             <div className="divider "></div>

@@ -15,7 +15,7 @@ import AdminHome from "../Pages/Dashboard/AdminHome/AdminHome";
 import AllUsers from "../Pages/Dashboard/AllUsers/AllUsers";
 import AddPublisher from "../Pages/Dashboard/AddPublisher/AddPublisher";
 import UpdateUserProfile from "../Pages/Login&Register/updateUserProfile";
-
+import AdminRoute from "./AdminRoute/AdminRoute";
 
 const router = createBrowserRouter([
   {
@@ -47,7 +47,8 @@ const router = createBrowserRouter([
             <ArticlesDetails></ArticlesDetails>
           </PrivetRouts>
         ),
-        loader:({params})=> fetch(`http://localhost:5000/articles/${params.id}`)
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/articles/${params.id}`),
       },
       {
         path: "/subscription",
@@ -70,29 +71,45 @@ const router = createBrowserRouter([
   },
   // admin route ------------------>
   {
-    path: 'dashboard',
-    element: <Dashboard></Dashboard>,
+    path: "dashboard",
+    element: (
+      <AdminRoute>
+        <Dashboard></Dashboard>
+      </AdminRoute>
+    ),
     errorElement: <ErrorPages></ErrorPages>,
     children: [
       {
-        path:'adminHome',
-        element: <AdminHome></AdminHome>
+        path: "adminHome",
+        element: <AdminHome></AdminHome>,
       },
       {
-        path:'users',
-        element: <AllUsers></AllUsers>
+        path: "users",
+        element: (
+          <AdminRoute>
+            <AllUsers></AllUsers>
+          </AdminRoute>
+        ),
       },
       {
-        path:'allArticles',
-        element: <AllArticles></AllArticles>
+        path: "allArticles",
+        element: (
+          <AdminRoute>
+            <AllArticles></AllArticles>
+          </AdminRoute>
+        ),
       },
       {
-        path:'allPublisher',
-        element: <AddPublisher></AddPublisher>
+        path: "allPublisher",
+        element: (
+          <AdminRoute>
+            {" "}
+            <AddPublisher></AddPublisher>
+          </AdminRoute>
+        ),
       },
-      
-    ]
-  }
+    ],
+  },
 ]);
 
 export default router;

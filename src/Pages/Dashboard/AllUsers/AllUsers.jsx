@@ -4,15 +4,12 @@ import { FaUser } from "react-icons/fa";
 import toast from "react-hot-toast";
 
 const AllUsers = () => {
+   
   const axiosSecure = useAxiosSecure();
   const { data: users = [], refetch } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
-      const res = await axiosSecure.get("/users", {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("access-token")}`,
-        },
-      });
+      const res = await axiosSecure.get("/users");
 
       return res.data;
     },
