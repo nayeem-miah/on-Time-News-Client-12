@@ -1,16 +1,32 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { FaUser } from "react-icons/fa";
+import toast from "react-hot-toast";
 
 const AllUsers = () => {
   const axiosSecure = useAxiosSecure();
-  const { data: users = [] } = useQuery({
+  const { data: users = [], refetch } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
-      const res = await axiosSecure.get("/users");
+      const res = await axiosSecure.get("/users", {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("access-token")}`,
+        },
+      });
+
       return res.data;
     },
   });
+
+  const handleCreateAdmin = user => {
+    axiosSecure.patch(`/users/admin/${user._id}`).then(res => {
+      console.log(res.data);
+      if (res.data.modifiedCount > 0) {
+        refetch();
+        toast.success(`${user.name} is an admin Now !`);
+      }
+    });
+  };
   return (
     <div>
       <div className="flex justify-evenly my-4">
@@ -35,19 +51,18 @@ const AllUsers = () => {
                 <th>{(i = i + 1)}</th>
                 <td>{user.name}</td>
                 <td>{user.email}</td>
-                <td><img
-                    src={user?.photo}
-                    className="w-10 h-10 rounded-full"
-                  /></td>
+                <td>
+                  <img src={user?.photo} className="w-10 h-10 rounded-full" />
+                </td>
                 <td>
                   {user.role === "admin" ? (
                     "Admin"
                   ) : (
                     <button
                       onClick={() => {
-                        // handleMakeAdmin(user);
+                        handleCreateAdmin(user);
                       }}
-                      className="btn bg-orange-500 text-2xl text-white btn-lg"
+                      className="btn bg-purple-500 text-2xl text-white btn-md"
                     >
                       <FaUser></FaUser>
                     </button>

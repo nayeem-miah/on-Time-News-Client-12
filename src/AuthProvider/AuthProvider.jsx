@@ -10,6 +10,7 @@ import {
 import { useEffect, useState } from "react";
 import { createContext } from "react";
 import auth from "../Firebase/firebase.config";
+import useAxiosPublic from "../Hooks/useAxiosPublic";
 
 export const AuthContext = createContext(null);
 const googleProvider = new GoogleAuthProvider();
@@ -17,6 +18,7 @@ const googleProvider = new GoogleAuthProvider();
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const axiosPublic = useAxiosPublic();
 
   const createUser = (email, password) => {
     setLoading(true);
@@ -31,7 +33,6 @@ const AuthProvider = ({ children }) => {
 
   // google login
   const googleLogin = () => {
-    setUser("");
     setLoading(true);
     return signInWithPopup(auth, googleProvider);
   };
@@ -54,35 +55,24 @@ const AuthProvider = ({ children }) => {
   // onAuthStateChanged
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, currentUser => {
-      // const userEmail = currentUser?.email || user?.email;
-      // const loggedUSer = { email: userEmail };
-      // console.log(user)
-      setLoading(false);
       setUser(currentUser);
-      // token
-      // // if (currentUser) {
-
-      // //   axios.post('http://localhost:5000/jwt',loggedUSer,
-      // //   { withCredentials: true })
-      // //   .then(res => {
-      // //     // console.log("token response ", res.data);
-      // //   });
-      // // }
-      // // else {
-      // //   axios.post('http://localhost:5000/logout', loggedUSer, {
-      // //     withCredentials : true,
-
-      // //   })
-      //   .then(res=> {
-      //     console.log(res.data);
-      //   })
-      // }
+      if (currentUser) {
+        // get token and store client
+        const userInfo = { email: currentUser.email };
+        // console.log(userInfo);
+        axiosPublic.post("/jwt", userInfo).then(res => {
+          if (res.data.token) {
+            localStorage.setItem("access-token", res.data.token);
+            setLoading(false);
+          }
+        });
+      } else {
+        localStorage.removeItem("access-token");
+        setLoading(false);
+      }
     });
-
-    return () => {
-      unsubscribe();
-    };
-  }, []);
+    return () => unsubscribe();
+  }, [axiosPublic]);
 
   //  auth info
   const authInfo = {
