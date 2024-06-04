@@ -3,6 +3,7 @@ import axios from "axios";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import toast from "react-hot-toast";
 import { Helmet } from "react-helmet-async";
+import { Navigate } from "react-router-dom";
 
 const AddArticles = () => {
   const axiosSecure = useAxiosSecure();
@@ -36,6 +37,7 @@ const AddArticles = () => {
         if (res.data.insertedId) {
           toast.success(`${publisherName}  Added successfully`);
           form.reset();
+          <Navigate to={'/'}></Navigate>
         }
         console.log(res.data);
       }

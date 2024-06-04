@@ -13,7 +13,11 @@ const AllPublisher = () => {
   });
   return (
     <div>
-      <h3 className="text-purple-500 text-4xl text-center ">All Publisher </h3>
+      <div className="md:w-4/12 mx-auto text-center my-8">
+        <h4 className="text-3xl text-purple-500 my-6 text-center uppercase border-b-4 py-4">
+          All Publisher
+        </h4>
+      </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {publisher.map(publices => (
           <AllPublisherCard

@@ -4,7 +4,6 @@ import Home from "../Pages/Home/Home";
 import AddArticles from "../Pages/AddArticles/AddArticles";
 import AllArticles from "../Pages/AllArticles/AllArticles";
 import Subscription from "../Pages/Subscription/Subscription";
-
 import Login from "../Pages/Login&Register/Login";
 import Register from "../Pages/Login&Register/Register";
 import ErrorPages from "../Compoents/ErrorPage";
@@ -16,6 +15,8 @@ import AllUsers from "../Pages/Dashboard/AllUsers/AllUsers";
 import AddPublisher from "../Pages/Dashboard/AddPublisher/AddPublisher";
 import UpdateUserProfile from "../Pages/Login&Register/updateUserProfile";
 import AdminRoute from "./AdminRoute/AdminRoute";
+import MyArticlesPage from "../Pages/MyArticlesPage/MyArticlesPage";
+import PremiumArticles from "../Pages/PremiumArticles/PremiumArticles";
 
 const router = createBrowserRouter([
   {
@@ -52,7 +53,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/subscription",
-        element: <Subscription></Subscription>,
+        element: (
+          <PrivetRouts>
+            <Subscription></Subscription>
+          </PrivetRouts>
+        ),
       },
 
       {
@@ -66,6 +71,22 @@ const router = createBrowserRouter([
       {
         path: "/updateUserProfile",
         element: <UpdateUserProfile></UpdateUserProfile>,
+      },
+      {
+        path: "/myArticles",
+        element: (
+          <PrivetRouts>
+            <MyArticlesPage></MyArticlesPage>
+          </PrivetRouts>
+        ),
+      },
+      {
+        path: "/premiumArticles",
+        element: (
+          <PrivetRouts>
+            <PremiumArticles></PremiumArticles>
+          </PrivetRouts>
+        ),
       },
     ],
   },
@@ -103,7 +124,6 @@ const router = createBrowserRouter([
         path: "allPublisher",
         element: (
           <AdminRoute>
-            {" "}
             <AddPublisher></AddPublisher>
           </AdminRoute>
         ),
