@@ -17,6 +17,7 @@ import UpdateUserProfile from "../Pages/Login&Register/updateUserProfile";
 import AdminRoute from "./AdminRoute/AdminRoute";
 import MyArticlesPage from "../Pages/MyArticlesPage/MyArticlesPage";
 import PremiumArticles from "../Pages/PremiumArticles/PremiumArticles";
+import UpdateArticles from "../Pages/MyArticlesPage/UpdateArticles/UpdateArticles";
 
 const router = createBrowserRouter([
   {
@@ -70,7 +71,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/updateUserProfile",
-        element: <UpdateUserProfile></UpdateUserProfile>,
+        element: (
+          <PrivetRouts>
+            <UpdateUserProfile></UpdateUserProfile>
+          </PrivetRouts>
+        ),
       },
       {
         path: "/myArticles",
@@ -79,6 +84,15 @@ const router = createBrowserRouter([
             <MyArticlesPage></MyArticlesPage>
           </PrivetRouts>
         ),
+      },
+      {
+        path: "/updateArticles/:id",
+        element: (
+          <PrivetRouts>
+            <UpdateArticles></UpdateArticles>
+          </PrivetRouts>
+        ),
+        loader: ({params})=>fetch(`http://localhost:5000/article/${params.id}`)
       },
       {
         path: "/premiumArticles",

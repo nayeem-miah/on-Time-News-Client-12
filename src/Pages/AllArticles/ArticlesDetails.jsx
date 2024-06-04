@@ -2,6 +2,7 @@ import { useLoaderData } from "react-router-dom";
 
 const ArticlesDetails = () => {
   const data = useLoaderData();
+  // console.log(data);
   
 
   return (

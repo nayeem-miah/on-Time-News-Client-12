@@ -63,16 +63,6 @@ const AllUsers = () => {
                     </button>
                   )}
                 </td>
-                {/* <td>
-                  <button
-                    onClick={() => {
-                    //   handleDelete(user);
-                    }}
-                    className="btn bg-orange-500 text-2xl text-white btn-lg"
-                  >
-                    <FaTrash></FaTrash>
-                  </button>
-                </td> */}
               </tr>
             ))}
           </tbody>

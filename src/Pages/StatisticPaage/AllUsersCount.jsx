@@ -1,17 +1,19 @@
 import { useQuery } from "@tanstack/react-query";
-import useAxiosSecure from "../../Hooks/useAxiosSecure";
+
 import React from "react";
 import { useCountUp } from "react-countup";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 const AllUsersCount = () => {
-  const axiosSecure = useAxiosSecure();
+  const axiosPublic = useAxiosPublic();
   const { data: users = [] } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
-      const res = await axiosSecure.get("/users");
+      const res = await axiosPublic.get("/users");
       return res.data;
     },
   });
+  console.log(users);
   const countUpRef = React.useRef(null);
   const { reset, update } = useCountUp({
     ref: countUpRef,

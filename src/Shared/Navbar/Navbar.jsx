@@ -20,6 +20,7 @@ const Navbar = () => {
           showConfirmButton: false,
           timer: 2000,
         });
+        <NavLink to={'/'}></NavLink>
         console.log(result.user);
       })
       .catch(error => {

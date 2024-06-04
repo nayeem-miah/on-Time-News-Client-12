@@ -1,28 +1,32 @@
 import axios from "axios";
-import useAxiosSecure from "../../Hooks/useAxiosSecure";
+
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import useAuth from "../../Hooks/useAuth";
-import { useNavigate } from "react-router-dom";
 
-const AddArticles = () => {
+const UpdateArticles = () => {
   const axiosSecure = useAxiosSecure();
-  const { user } = useAuth();
+  const data = useLoaderData();
   const navigate = useNavigate();
-  const email = user?.email;
-  const photo = user?.photoURL;
-  const displayName = user?.displayName;
+  // console.log(data);
+  const {
+    title,
+    publisher,
+    tags,
+    // image,
+    _id,
+    description,
+    email,
+    photo,
+    displayName,
+  } = data;
 
-  const handleSubmit = async e => {
+  const handleDataUpdated = async e => {
     e.preventDefault();
     const form = e.target;
-    const title = form.title.value;
-    const publisher = form.publisher.value;
-    const tags = form.tags.value;
-    const description = form.description.value;
     const image = form.image.files[0];
     const formData = new FormData();
     formData.append("image", image);
-    // formData.append("tags", JSON.stringify(tags.map(tag => tag.value)));
     try {
       const { data } = await axios.post(
         `https://api.imgbb.com/1/upload?key=${
@@ -30,7 +34,7 @@ const AddArticles = () => {
         }`,
         formData
       );
-      // post data database
+      // console.log(data);
       if (data.success) {
         const newData = {
           title,
@@ -42,16 +46,15 @@ const AddArticles = () => {
           photo,
           displayName,
         };
-
-        // console.log(newData);
-
-        const res = await axiosSecure.post("/articles", newData);
-        if (res.data.insertedId) {
-          toast.success(`${title} data Added successfully`);
-          form.reset();
-          navigate('/allArticles')
+        const articlesResponce = await axiosSecure.patch(
+          `/updateArticles/${_id}`,
+          newData
+        );
+        console.log(articlesResponce);
+        if (articlesResponce.modifiedCount > 0) {
+          toast.success(`articles updated Successfully 🔥`);
+          navigate('/myArticles')
         }
-        console.log(res.data);
       }
     } catch (err) {
       console.log(err);
@@ -61,16 +64,17 @@ const AddArticles = () => {
   return (
     <section className="max-w-full py-10 p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
       <h2 className="text-center my-10 text-3xl font-semibold text-gray-700 capitalize dark:text-white">
-        Add Articles
+        Update Articles
       </h2>
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleDataUpdated}>
         <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2 mb-6">
           <div>
             <label className="text-gray-700 dark:text-gray-200">Title</label>
             <input
               type="text"
               name="title"
+              defaultValue={title}
               required
               placeholder="title"
               className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
@@ -90,6 +94,7 @@ const AddArticles = () => {
               placeholder="select publisher"
               name="publisher"
               required
+              defaultValue={publisher}
             >
               <option value="The New York Times (USA)">
                 The New York Times (USA)
@@ -134,6 +139,7 @@ const AddArticles = () => {
               className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
               placeholder="select tags"
               name="tags"
+              defaultValue={tags}
               required
             >
               <option value="sports" selected>
@@ -180,6 +186,7 @@ const AddArticles = () => {
             name="description"
             placeholder="description"
             required
+            defaultValue={description}
             className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
           />
         </div>
@@ -193,4 +200,4 @@ const AddArticles = () => {
   );
 };
 
-export default AddArticles;
+export default UpdateArticles;
