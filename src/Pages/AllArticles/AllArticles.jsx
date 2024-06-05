@@ -12,15 +12,29 @@ const AllArticles = () => {
       return res.data;
     },
   });
-  // console.log(AllArticles);
+  const handleSearch = e => {
+    e.preventDefault();
+    const field = e.target.search.value;
+    // setSearch(field);
+    console.log(field);
+  };
+
   return (
     <div>
-      <h3 className="text-2xl">All Articles :({AllArticles?.length})</h3>
-
+      <form onSubmit={handleSearch} className="mx-auto text-center">
+        <input
+          type="search"
+          name="search"
+          placeholder="search here"
+          required
+          className="input input-bordered input-accent w-full lg:max-w-xl max-w-48 md:max-w-xl"
+        />
+        <input className="btn btn-success" type="submit" value="search" />
+      </form>
       <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 my-10">
         {AllArticles.map(
           articles =>
-            articles.status === "approve" &&  (
+            articles.status === "approve" && (
               <ArticlesCard
                 key={articles._id}
                 articles={articles}
