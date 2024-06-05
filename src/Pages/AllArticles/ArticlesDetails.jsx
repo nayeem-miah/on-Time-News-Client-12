@@ -3,7 +3,6 @@ import { useLoaderData } from "react-router-dom";
 const ArticlesDetails = () => {
   const data = useLoaderData();
   // console.log(data);
-  
 
   return (
     <div>
@@ -18,9 +17,9 @@ const ArticlesDetails = () => {
               #{data.tags}
             </h1>
           </div>
-          <p>{data.publisher}</p>
+          <p>publisher Name : {data.publisher}</p>
         </div>
-        <p className="mt-2 text-xl text-gray-600 dark:text-gray-400 lg:w-1/2">
+        <p className="mt-2 text-xl text-gray-600 dark:text-gray-400 lg:w-2/3">
           {data.description}
         </p>
       </div>

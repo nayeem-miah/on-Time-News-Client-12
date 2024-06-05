@@ -66,9 +66,9 @@ const MyArticlesPage = () => {
               <tr key={item._id}>
                 <td> {(i = i + 1)}</td>
                 <td>{item.title}</td>
-                <td>{"pending"}</td>
+                <td>{item.status}</td>
                 <th>
-                  <p>isPremium</p>
+                  <p>{item.isPremium}</p>
                 </th>
                 <th>
                   <Link to={`/articlesDetails/${item._id}`}>

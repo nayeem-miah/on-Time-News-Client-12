@@ -12,7 +12,7 @@ import useAdmin from "../Hooks/useAdmin";
 const Dashboard = () => {
   const { user } = useAuth();
   const [isAdmin] = useAdmin();
-
+  
   return (
     <div>
       <Navbar></Navbar>

@@ -1,20 +1,50 @@
 import { FaTrash } from "react-icons/fa";
-import { Link } from "react-router-dom";
+
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const AllArticlesAdmin = () => {
   const axiosSecure = useAxiosSecure();
-
-  const { data: AllArticles = [],refetch } = useQuery({
+  const navigate = useNavigate();
+  const { data: AllArticles = [], refetch } = useQuery({
     queryKey: ["articles"],
     queryFn: async () => {
       const res = await axiosSecure.get("/articles");
       return res.data;
     },
   });
-  // console.log(AllArticles);
+
+  const handleApproved = item => {
+    axiosSecure.patch(`/admin-articles/${item._id}`).then(res => {
+      if (res.data.modifiedCount > 0) {
+        refetch();
+        Swal.fire({
+          position: "top-center",
+          icon: "success",
+          title: `${item.title} is an approve now!`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        navigate('/allArticles')
+      }
+    });
+  };
+  const handleIsPremium = item => {
+    axiosSecure.patch(`/isPremium-articles/${item._id}`).then(res => {
+      if (res.data.modifiedCount > 0) {
+        refetch();
+        Swal.fire({
+          position: "top-center",
+          icon: "success",
+          title: `${item.title} is an Premium now!`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    });
+  };
 
   const handleDelete = id => {
     Swal.fire({
@@ -28,7 +58,6 @@ const AllArticlesAdmin = () => {
     }).then(result => {
       if (result.isConfirmed) {
         axiosSecure.delete(`/article/${id}`).then(res => {
-          //   console.log(res);
           if (res.data.deletedCount > 0) {
             refetch();
             Swal.fire({
@@ -41,6 +70,7 @@ const AllArticlesAdmin = () => {
       }
     });
   };
+
   return (
     <div className="my-10">
       <div className="flex justify-evenly my-4">
@@ -55,6 +85,7 @@ const AllArticlesAdmin = () => {
               <th>serial no</th>
               <th>article title</th>
               <th>author info</th>
+              <th>status</th>
               <th>publisher</th>
               <th>Make Premium</th>
               <th>approve</th>
@@ -63,7 +94,7 @@ const AllArticlesAdmin = () => {
             </tr>
           </thead>
           <tbody>
-            {AllArticles.map((item,i) => (
+            {AllArticles.map((item, i) => (
               <tr key={item._id}>
                 <td> {(i = i + 1)}</td>
                 <td>{item.title}</td>
@@ -77,21 +108,39 @@ const AllArticlesAdmin = () => {
                     <div>
                       <div className="font-bold">{item.displayName}</div>
                       <div className="text-sm opacity-50">{item.email}</div>
+                      <div className="text-sm opacity-50">{item.date}</div>
                     </div>
                   </div>
                 </td>
+                <td>{item.status}</td>
                 <td>{item.publisher}</td>
                 <th>
-                  <button className="rounded p-1 bg-purple-500 text-black hover:text-white">
-                    isPremium
-                  </button>
+                  {item.isPremium === "Premium" ? (
+                    "Premium"
+                  ) : (
+                    <button
+                      onClick={() => {
+                        handleIsPremium(item);
+                      }}
+                      className="rounded p-1 bg-purple-500 text-black hover:text-white w-full"
+                    >
+                      Premium
+                    </button>
+                  )}
                 </th>
                 <th>
-                  <Link>
-                    <button className="rounded p-1 bg-purple-500 text-black hover:text-white">
+                  {item.status === "approve" ? (
+                    "Approve"
+                  ) : (
+                    <button
+                      onClick={() => {
+                        handleApproved(item);
+                      }}
+                      className="rounded p-1 bg-purple-500 text-black hover:text-white"
+                    >
                       approve
                     </button>
-                  </Link>
+                  )}
                 </th>
                 {/* <th>
                   <Link>

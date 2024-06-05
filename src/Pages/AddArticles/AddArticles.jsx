@@ -11,7 +11,10 @@ const AddArticles = () => {
   const email = user?.email;
   const photo = user?.photoURL;
   const displayName = user?.displayName;
-
+  const status = "pending";
+  const isPremium = "Make Premium";
+  // const dateString = new Date();
+  const date = new Date().getTime().toLocaleString();
   const handleSubmit = async e => {
     e.preventDefault();
     const form = e.target;
@@ -22,7 +25,6 @@ const AddArticles = () => {
     const image = form.image.files[0];
     const formData = new FormData();
     formData.append("image", image);
-    // formData.append("tags", JSON.stringify(tags.map(tag => tag.value)));
     try {
       const { data } = await axios.post(
         `https://api.imgbb.com/1/upload?key=${
@@ -41,15 +43,15 @@ const AddArticles = () => {
           email,
           photo,
           displayName,
+          status,
+          isPremium,
+          date,
         };
-
-        // console.log(newData);
-
         const res = await axiosSecure.post("/articles", newData);
         if (res.data.insertedId) {
           toast.success(`${title} data Added successfully`);
           form.reset();
-          navigate('/allArticles')
+          navigate("/allArticles");
         }
         console.log(res.data);
       }

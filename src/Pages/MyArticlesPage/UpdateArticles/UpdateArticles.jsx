@@ -52,8 +52,8 @@ const UpdateArticles = () => {
         );
         console.log(articlesResponce);
         if (articlesResponce.modifiedCount > 0) {
-          toast.success(`articles updated Successfully 🔥`);
           navigate('/myArticles')
+          toast.success(`articles updated Successfully 🔥`);
         }
       }
     } catch (err) {
