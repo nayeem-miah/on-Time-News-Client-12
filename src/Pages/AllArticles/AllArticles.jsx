@@ -20,7 +20,7 @@ const AllArticles = () => {
       <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 my-10">
         {AllArticles.map(
           articles =>
-            articles.status === "approve" && (
+            articles.status === "approve" &&  (
               <ArticlesCard
                 key={articles._id}
                 articles={articles}

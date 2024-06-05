@@ -117,7 +117,7 @@ const AddArticles = () => {
                 The Sydney Morning Herald (Australia)
               </option>
               <option value="The Daily Telegraph (UK)">
-                The Daily Telegraph (UK)
+                The Daily Telegraph (AFG)
               </option>
               <option value="Le Monde (France)">Le Monde (France)</option>
               <option value="El País (Spain)">El País (Spain)</option>
