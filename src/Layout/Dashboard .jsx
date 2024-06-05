@@ -36,7 +36,7 @@ const Dashboard = () => {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to={"/allArticles"}>
+                  <NavLink to={"/dashboard/allArticlesAdmin"}>
                     <FaRegNewspaper></FaRegNewspaper>
                     All Articles
                   </NavLink>
@@ -49,11 +49,9 @@ const Dashboard = () => {
                 </li>
               </>
             )}
-            {/* shared nav links */}
 
-            <div className="divider "></div>
-            <div className="divider "></div>
-            <div className="divider "></div>
+            <div className=" min-h-52"></div>
+
             <li>
               <NavLink to={"/"}>
                 <FaHouseMedical></FaHouseMedical>

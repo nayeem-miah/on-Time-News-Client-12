@@ -4,12 +4,12 @@ import useAuth from "../../Hooks/useAuth";
 import { FaTrash } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
-// import useAdmin from "../../Hooks/useAdmin";
+
 
 const MyArticlesPage = () => {
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
-  //   const {isAdmin}= useAdmin();
+
   const { data: myArticles = [], refetch } = useQuery({
     queryKey: ["myArticles"],
     queryFn: async () => {
@@ -19,8 +19,6 @@ const MyArticlesPage = () => {
   });
 
   const handleDelete = id => {
-    // console.log(id);
-
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -66,9 +64,9 @@ const MyArticlesPage = () => {
           <tbody>
             {myArticles.map((item, i) => (
               <tr key={item._id}>
-                {(i = i + 1)}
+                <td> {(i = i + 1)}</td>
                 <td>{item.title}</td>
-                <td>{user.role === "admin" ? "Admin" : "Not Admin"}</td>
+                <td>{"pending"}</td>
                 <th>
                   <p>isPremium</p>
                 </th>

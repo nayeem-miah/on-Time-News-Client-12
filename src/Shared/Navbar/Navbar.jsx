@@ -48,7 +48,7 @@ const Navbar = () => {
       <span>
         {isAdmin && (
           <li>
-            <NavLink to="dashboard/adminHome">Dashboard</NavLink>
+            <NavLink to="/dashboard/adminHome">Dashboard</NavLink>
           </li>
         )}
       </span>

@@ -18,6 +18,7 @@ import AdminRoute from "./AdminRoute/AdminRoute";
 import MyArticlesPage from "../Pages/MyArticlesPage/MyArticlesPage";
 import PremiumArticles from "../Pages/PremiumArticles/PremiumArticles";
 import UpdateArticles from "../Pages/MyArticlesPage/UpdateArticles/UpdateArticles";
+import AllArticlesAdmin from "../Pages/Dashboard/AllArticles/AllArticlesAdmin";
 
 const router = createBrowserRouter([
   {
@@ -127,10 +128,10 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "allArticles",
+        path: "allArticlesAdmin",
         element: (
           <AdminRoute>
-            <AllArticles></AllArticles>
+            <AllArticlesAdmin></AllArticlesAdmin>
           </AdminRoute>
         ),
       },
