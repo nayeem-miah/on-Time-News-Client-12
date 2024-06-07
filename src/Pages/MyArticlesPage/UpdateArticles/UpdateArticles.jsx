@@ -13,17 +13,21 @@ const UpdateArticles = () => {
     title,
     publisher,
     tags,
-    // image,
     _id,
     description,
     email,
     photo,
     displayName,
+    viewCount
   } = data;
 
   const handleDataUpdated = async e => {
     e.preventDefault();
     const form = e.target;
+    const title = form.title.value;
+    const publisher = form.publisher.value;
+    const tags = form.tags.value;
+    const description = form.description.value;
     const image = form.image.files[0];
     const formData = new FormData();
     formData.append("image", image);
@@ -44,16 +48,16 @@ const UpdateArticles = () => {
           image: data.data.display_url,
           email,
           photo,
-          displayName,
+          displayName,viewCount
         };
         const articlesResponce = await axiosSecure.patch(
           `/updateArticles/${_id}`,
           newData
         );
         console.log(articlesResponce);
-        if (articlesResponce.modifiedCount > 0) {
-          navigate('/myArticles')
+        if (articlesResponce.data.modifiedCount > 0) {
           toast.success(`articles updated Successfully 🔥`);
+          navigate("/myArticles");
         }
       }
     } catch (err) {

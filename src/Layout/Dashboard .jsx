@@ -17,8 +17,8 @@ const Dashboard = () => {
     <div>
       <Navbar></Navbar>
       {/* dashBoard content  */}
-      <div className="flex ">
-        <div className="w-64 drawer lg:drawer-open min-h-screen bg-purple-500">
+      <div className="flex drawer drawer-content lg:drawer-open">
+        <div className="w-64  min-h-screen bg-purple-500">
           <ul className="menu text-black font-bold p-4">
             {isAdmin && (
               <>
@@ -73,7 +73,7 @@ const Dashboard = () => {
           </ul>
           {/* sidebar content */}
         </div>
-        <div className="flex-1 px-8">
+        <div className="flex-1 px-8 drawer-content">
           <Outlet></Outlet>
         </div>
       </div>

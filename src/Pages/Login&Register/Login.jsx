@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useState } from "react";
 import useAuth from "../../Hooks/useAuth";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -13,13 +14,13 @@ const Login = () => {
   const [success, setSuccess] = useState("");
   const location = useLocation();
   const navigate = useNavigate();
-console.log(success);
+// console.log(success);
   const handleLOgin = e => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
+    // console.log(email, password);
     logIn(email, password)
       .then(() => {
         toast.success("Login successfully");

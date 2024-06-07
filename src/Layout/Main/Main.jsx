@@ -6,7 +6,9 @@ const Main = () => {
   return (
     <div>
       {/* navbar */}
-      <Navbar></Navbar>
+   <div>
+   <Navbar></Navbar>
+   </div>
       {/* outlet */}
       <Outlet></Outlet>
       {/* footer */}

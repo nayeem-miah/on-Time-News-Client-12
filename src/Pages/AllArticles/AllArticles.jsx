@@ -1,27 +1,39 @@
-import { useQuery } from "@tanstack/react-query";
+// import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import ArticlesCard from "./ArticlesCard/ArticlesCard";
+import { useEffect, useState } from "react";
 
 const AllArticles = () => {
   const axiosPublic = useAxiosPublic();
+  const [AllArticles, setAllArticles] = useState();
+  const [search=[], setSearch] = useState("");
 
-  const { data: AllArticles = [] } = useQuery({
-    queryKey: ["articles"],
-    queryFn: async () => {
-      const res = await axiosPublic.get("/articles");
-      return res.data;
-    },
-  });
+  // const { data: AllArticles = [] } = useQuery(
+  //   {
+  //     queryKey: ["articles"],
+  //     queryFn: async () => {
+  //       const res = await axiosPublic.get(`/articles?search=${search}`);
+  //       return res.data;
+  //     },
+  //   },
+  //   [search]
+  // );
+
+  useEffect(() => {
+    axiosPublic(`/articles?search=${search}`).then(res =>
+      setAllArticles(res.data)
+    );
+  }, [search]);
   const handleSearch = e => {
     e.preventDefault();
     const field = e.target.search.value;
-    // setSearch(field);
+    setSearch(field);
     console.log(field);
   };
 
   return (
     <div>
-      <form onSubmit={handleSearch} className="mx-auto text-center">
+      <form onSubmit={handleSearch} className="mx-auto my-8">
         <input
           type="search"
           name="search"
@@ -32,7 +44,7 @@ const AllArticles = () => {
         <input className="btn btn-success" type="submit" value="search" />
       </form>
       <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 my-10">
-        {AllArticles.map(
+        {AllArticles?.map(
           articles =>
             articles.status === "approve" && (
               <ArticlesCard

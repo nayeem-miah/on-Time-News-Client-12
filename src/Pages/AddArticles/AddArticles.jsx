@@ -13,6 +13,9 @@ const AddArticles = () => {
   const displayName = user?.displayName;
   const status = "pending";
   const isPremium = "Make Premium";
+  const viewCount = 0;
+  const decline = "";
+  
   // const dateString = new Date();
   const date = new Date().getTime().toLocaleString();
   const handleSubmit = async e => {
@@ -46,6 +49,8 @@ const AddArticles = () => {
           status,
           isPremium,
           date,
+          viewCount,
+          decline
         };
         const res = await axiosSecure.post("/articles", newData);
         if (res.data.insertedId) {
@@ -93,7 +98,7 @@ const AddArticles = () => {
               name="publisher"
               required
             >
-              <option value="The New York Times (USA)">
+              <option value="The New York Times (USA)" >
                 The New York Times (USA)
               </option>
               <option value="The Washington Post (USA)">
