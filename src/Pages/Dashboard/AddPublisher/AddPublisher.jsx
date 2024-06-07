@@ -31,8 +31,6 @@ const AddArticles = () => {
           image: data.data.display_url,
         };
 
-        // console.log(newData);
-
         const res = await axiosSecure.post("/publisher", newData);
         if (res.data.insertedId) {
           toast.success(`${publisherName}  Added successfully`);
