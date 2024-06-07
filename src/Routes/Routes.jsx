@@ -19,6 +19,7 @@ import MyArticlesPage from "../Pages/MyArticlesPage/MyArticlesPage";
 import PremiumArticles from "../Pages/PremiumArticles/PremiumArticles";
 import UpdateArticles from "../Pages/MyArticlesPage/UpdateArticles/UpdateArticles";
 import AllArticlesAdmin from "../Pages/Dashboard/AllArticles/AllArticlesAdmin";
+import Modal from "../Pages/Dashboard/AllArticles/modal";
 
 const router = createBrowserRouter([
   {
@@ -132,6 +133,14 @@ const router = createBrowserRouter([
         element: (
           <AdminRoute>
             <AllArticlesAdmin></AllArticlesAdmin>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "allArticlesAdmin/modal",
+        element: (
+          <AdminRoute>
+            <Modal></Modal>
           </AdminRoute>
         ),
       },

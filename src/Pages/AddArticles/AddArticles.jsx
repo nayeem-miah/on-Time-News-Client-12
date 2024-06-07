@@ -14,7 +14,7 @@ const AddArticles = () => {
   const status = "pending";
   const isPremium = "Make Premium";
   const viewCount = 0;
-  const decline = "";
+  const decline = {};
   
   // const dateString = new Date();
   const date = new Date().getTime().toLocaleString();

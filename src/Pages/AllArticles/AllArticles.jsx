@@ -20,7 +20,7 @@ const AllArticles = () => {
   // );
 
   useEffect(() => {
-    axiosPublic(`/articles?search=${search}`).then(res =>
+    axiosPublic(`/searchArticles?search=${search}`).then(res =>
       setAllArticles(res.data)
     );
   }, [search]);

@@ -3,7 +3,7 @@ import { FaTrash } from "react-icons/fa";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const AllArticlesAdmin = () => {
   const axiosSecure = useAxiosSecure();
@@ -27,7 +27,7 @@ const AllArticlesAdmin = () => {
           showConfirmButton: false,
           timer: 1500,
         });
-        navigate('/allArticles')
+        navigate("/allArticles");
       }
     });
   };
@@ -82,21 +82,21 @@ const AllArticlesAdmin = () => {
           {/* head */}
           <thead>
             <tr className="text-xs font-bold border-b-2">
-              <th>serial no</th>
+              {/* <th>serial no</th>   */}
               <th>article title</th>
               <th>author info</th>
               <th>status</th>
               <th>publisher</th>
               <th>Make Premium</th>
               <th>approve</th>
-              {/* <th>decline</th> */}
+              <th>decline</th>
               <th>delete</th>
             </tr>
           </thead>
           <tbody>
             {AllArticles.map((item, i) => (
               <tr key={item._id}>
-                <td> {(i = i + 1)}</td>
+                {/* <td> {(i = i + 1)}</td> */}
                 <td>{item.title}</td>
                 <td>
                   <div className="flex items-center gap-3">
@@ -142,19 +142,19 @@ const AllArticlesAdmin = () => {
                     </button>
                   )}
                 </th>
-                {/* <th>
-                  <Link>
+                <th>
+                  <Link to={"/dashboard/allArticlesAdmin/modal"}>
                     <button className="rounded p-1 bg-purple-500 text-black hover:text-white">
                       decline
                     </button>
                   </Link>
-                </th> */}
+                </th>
                 <th>
                   <button
                     onClick={() => {
                       handleDelete(item._id);
                     }}
-                    className="btn btn-ghost btn-lg"
+                    className="btn btn-ghost btn-lg text-red-600"
                   >
                     <FaTrash></FaTrash>
                   </button>

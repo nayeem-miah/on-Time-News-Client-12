@@ -1,19 +1,15 @@
-import { Chart } from "react-google-charts";
+import Chaarts from "./Chaarts";
+import Charts1 from "./Charts1";
+import Charts2 from "./Charts2";
+
 
 const AdminHome = () => {
   return (
-    <div>
-      <Chart
-        chartType="ScatterChart"
-        data={[
-          ["Age", "Weight"],
-          [4, 5.5],
-          [8, 12],
-        ]}
-        width="100%"
-        height="400px"
-        legendToggle
-      />
+    <div className="my-10">
+      <Chaarts></Chaarts>
+      
+      <Charts2></Charts2>
+      <Charts1></Charts1>
     </div>
   );
 };
