@@ -9,7 +9,7 @@ const Home = () => {
   return (
     <div>
       <Helmet>
-        <title>OnTimeNews | Home Page </title>{" "}
+        <title>OnTimeNews | Home Page </title>
       </Helmet>
       {/* headers */}
       <Header></Header>

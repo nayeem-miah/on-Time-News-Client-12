@@ -1,4 +1,4 @@
-// import { useQuery } from "@tanstack/react-query";
+
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import ArticlesCard from "./ArticlesCard/ArticlesCard";
 import { useEffect, useState } from "react";
@@ -6,18 +6,9 @@ import { useEffect, useState } from "react";
 const AllArticles = () => {
   const axiosPublic = useAxiosPublic();
   const [AllArticles, setAllArticles] = useState();
-  const [search=[], setSearch] = useState("");
-
-  // const { data: AllArticles = [] } = useQuery(
-  //   {
-  //     queryKey: ["articles"],
-  //     queryFn: async () => {
-  //       const res = await axiosPublic.get(`/articles?search=${search}`);
-  //       return res.data;
-  //     },
-  //   },
-  //   [search]
-  // );
+  const [search = [], setSearch] = useState("");
+  // const navi
+  // console.log(search);
 
   useEffect(() => {
     axiosPublic(`/searchArticles?search=${search}`).then(res =>
@@ -28,7 +19,6 @@ const AllArticles = () => {
     e.preventDefault();
     const field = e.target.search.value;
     setSearch(field);
-    console.log(field);
   };
 
   return (

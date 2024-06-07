@@ -13,7 +13,7 @@ const AllUsersCount = () => {
       return res.data;
     },
   });
-  console.log(users);
+  // console.log(users);
   const countUpRef = React.useRef(null);
   const { reset, update } = useCountUp({
     ref: countUpRef,
