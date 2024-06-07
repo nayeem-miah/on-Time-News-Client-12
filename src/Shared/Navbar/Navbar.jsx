@@ -20,7 +20,7 @@ const Navbar = () => {
           showConfirmButton: false,
           timer: 2000,
         });
-        <NavLink to={'/'}></NavLink>
+        <NavLink to={"/"}></NavLink>;
         console.log(result.user);
       })
       .catch(error => {
@@ -34,16 +34,20 @@ const Navbar = () => {
       <li>
         <NavLink to="/">Home</NavLink>
       </li>
-      <li>
-        <NavLink to="/addArticles">Add Articles</NavLink>
-      </li>
+      {user && (
+        <li>
+          <NavLink to="/addArticles">Add Articles</NavLink>
+        </li>
+      )}
       <li>
         <NavLink to="/allArticles">All Articles </NavLink>
       </li>
 
-      <li>
-        <NavLink to="/subscription">Subscription</NavLink>
-      </li>
+      {user && (
+        <li>
+          <NavLink to="/subscription">Subscription</NavLink>
+        </li>
+      )}
       {/*  (this will be conditional show only if user is admin) */}
       <span>
         {isAdmin && (
@@ -54,17 +58,20 @@ const Navbar = () => {
       </span>
       {/* this will be conditional show only If user taken
         Subscription */}
-      <li>
-        <NavLink to="/premiumArticles">Premium Articles</NavLink>
-      </li>
-      <li>
-        <NavLink to="/myArticles">My Articles </NavLink>
-      </li>
+      {user && (
+        <li>
+          <NavLink to="/premiumArticles">Premium Articles</NavLink>
+        </li>
+      )}
+      {user && (
+        <li>
+          <NavLink to="/myArticles">My Articles </NavLink>
+        </li>
+      )}
     </>
   );
   return (
-    // fixed z-10 min-h-[calc(100vh-2343px)] fixed z-50 min-h-[calc(100vh-1px)]
-    <div className="navbar bg-base-300 shadow-2xl  max-w-screen-xl mx-auto border-b-2">
+    <div className="navbar bg-base-300 shadow-2xl   fixed z-10 min-h-[calc(100vh-100px)  max-w-screen-xl mx-auto border-b-2">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn  btn-ghost lg:hidden">

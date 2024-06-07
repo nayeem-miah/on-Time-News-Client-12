@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Plans = () => {
   const cardData = {
     title: "Premium Plan",
@@ -61,10 +63,10 @@ const Plans = () => {
             ))}
           </ul>
           <div className="text-center">
-            <button className="text-xl font-bold btn bg-white rounded-lg text-pink-600">
+            <Link to={'/subscription'} className="text-xl font-bold btn bg-white rounded-lg text-pink-600">
               Try Free 1 Month
               {/* {cardData.price} */}
-            </button>
+            </Link>
           </div>
         </div>
       </div>
@@ -100,9 +102,9 @@ const Plans = () => {
             ))}
           </ul>
           <div className="text-center">
-            <button className="text-xl font-bold btn bg-white rounded-lg text-pink-600">
+            <Link to={'/subscription'} className="text-xl font-bold btn bg-white rounded-lg text-pink-600">
               get Premium Duo
-            </button>
+            </Link>
           </div>
         </div>
       </div>
@@ -140,9 +142,9 @@ const Plans = () => {
             ))}
           </ul>
           <div className="text-center">
-            <button className="text-xl font-bold btn bg-white rounded-lg text-pink-600">
+            <Link to={'/subscription'} className="lg:text-xl text-[16px]  font-bold btn bg-white rounded-lg text-pink-600">
               get Premium Family
-            </button>
+            </Link>
           </div>
         </div>
       </div>

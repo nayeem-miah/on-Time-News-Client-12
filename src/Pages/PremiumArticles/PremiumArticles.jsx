@@ -15,9 +15,9 @@ const PremiumArticles = () => {
   // console.log(AllArticles);
   return (
     <div>
-      {/* <h3 className="text-2xl">All Articles :({AllArticles?.length})</h3> */}
+    
 
-      <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 my-10">
+      <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 ">
         {AllArticles.map(
           articles =>
             articles.isPremium === "Premium" && (

@@ -5,7 +5,7 @@ import Charts2 from "./Charts2";
 
 const AdminHome = () => {
   return (
-    <div className="my-10">
+    <div className="my-10 mt-16">
       <Chaarts></Chaarts>
       
       <Charts2></Charts2>

@@ -13,33 +13,32 @@ const AllUsersCount = () => {
       return res.data;
     },
   });
-  // console.log(users);
   const countUpRef = React.useRef(null);
   const { reset, update } = useCountUp({
     ref: countUpRef,
     start: 0,
-    // end: 2356,
+
     delay: 10,
-    // duration: 400,
   });
   return (
-    <div className="bg-slate-200 w-1/2">
+    <div className="bg-slate-200 lg:w-1/3 w-full rounded">
       <div className="text-6xl text-green-600  text-center" ref={countUpRef} />
-      <div className="flex justify-around p-5">
-        <h3 className="text-4xl text-purple-500">
-          All Users : ({users.length})
-        </h3>
-        <button className="text-4xl text-green-600 btn" onClick={reset}>
+      <div className="lg:flex justify-around p-5">
+        <button
+          className="text-3xl text-green-600 btn lg:my-0 my-3 mr-6"
+          onClick={reset}
+        >
           Reset
         </button>
 
         <button
-          className="text-4xl text-green-600 btn"
+          className="text-3xl text-green-600 btn"
           onClick={() => update(users.length)}
         >
           Count Start
         </button>
       </div>
+      <h3 className="text-4xl text-purple-500 p-4 text-center">All Users : ({users.length})</h3>
     </div>
   );
 };

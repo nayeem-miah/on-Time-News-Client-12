@@ -14,7 +14,7 @@ const ArticlesCard = ({ articles }) => {
     return res.data;
   };
   return (
-    <div>
+    <div className="">
       {articles.isPremium === "Premium" ? (
         <div className="w-full max-w-sm overflow-hidden h-full bg-white rounded-lg  dark:bg-blue-400 shadow-2xl hover:scale-105">
           <img

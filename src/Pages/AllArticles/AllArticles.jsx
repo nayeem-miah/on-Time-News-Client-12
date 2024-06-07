@@ -22,8 +22,8 @@ const AllArticles = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSearch} className="mx-auto my-8">
+    <div className="py-10">
+      <form onSubmit={handleSearch} className="mt-20">
         <input
           type="search"
           name="search"

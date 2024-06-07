@@ -17,9 +17,9 @@ const Dashboard = () => {
     <div>
       <Navbar></Navbar>
       {/* dashBoard content  */}
-      <div className="flex drawer drawer-content lg:drawer-open">
-        <div className="w-64  min-h-screen bg-purple-500">
-          <ul className="menu text-black font-bold p-4">
+      <div className="flex drawer drawer-content lg:drawer-open ">
+        <div className="w-64  min-h-screen bg-purple-500 mt-16">
+          <ul className="menu text-black font-bold p-4 ">
             {isAdmin && (
               <>
                 <li>

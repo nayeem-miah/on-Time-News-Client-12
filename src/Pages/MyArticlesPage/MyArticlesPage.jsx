@@ -5,7 +5,6 @@ import { FaTrash } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 
-
 const MyArticlesPage = () => {
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
@@ -44,10 +43,9 @@ const MyArticlesPage = () => {
     });
   };
   return (
-    <div className="min-h-[calc(100vh-320px)] my-8 mx-8">
+    <div className="min-h-[calc(100vh-320px)] ">
       <h3>My Articles Page:( {myArticles.length})</h3>
-
-      <div className="overflow-x-auto w-full">
+      <div className="overflow-x-auto w-full mt-20">
         <table className="table">
           {/* head */}
           <thead>
@@ -80,7 +78,7 @@ const MyArticlesPage = () => {
                 <th>
                   <Link to={`/updateArticles/${item._id}`}>
                     <button className="btn bg-purple-500 text-black hover:text-white">
-                    update
+                      update
                     </button>
                   </Link>
                 </th>
