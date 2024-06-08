@@ -17,9 +17,8 @@ function Newsletter() {
         <h2 className="text-2xl font-bold text-center text-gray-800 mb-4">
           Subscribe to Our Newsletter
         </h2>
-        <p className="text-lg text-gray-600 mb-6 text-center">
-          Stay up-to-date with our latest news and updates by subscribing to our
-          newsletter.
+        <p className="text-gray-600 mb-4 text-center">
+          Get the latest updates and offers directly to your inbox.
         </p>
         <form
           onSubmit={handleSubmit}

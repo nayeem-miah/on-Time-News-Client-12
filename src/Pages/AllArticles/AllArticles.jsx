@@ -1,5 +1,6 @@
 
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import UserFilter from "../Dashboard/AllUsers/filter.";
 import ArticlesCard from "./ArticlesCard/ArticlesCard";
 import { useEffect, useState } from "react";
 
@@ -33,6 +34,7 @@ const AllArticles = () => {
         />
         <input className="btn btn-success" type="submit" value="search" />
       </form>
+      {/* <UserFilter></UserFilter> */}
       <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 my-10">
         {AllArticles?.map(
           articles =>

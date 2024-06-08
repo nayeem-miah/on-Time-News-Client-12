@@ -73,11 +73,11 @@ const Register = () => {
  
 
   return (
-    <div className="flex justify-center items-center  my-10">
+    <div className="flex justify-center items-center ">
       <Helmet>
         <title>OnTimeNews | Register Page </title>
       </Helmet>
-      <div className="flex w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg  lg:max-w-4xl ">
+      <div className="flex w-full my-20 max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg  lg:max-w-4xl ">
         <div className="w-full px-6 py-8 md:px-8 lg:w-2/3 mx-auto">
           <div className="flex justify-center mx-auto"></div>
 

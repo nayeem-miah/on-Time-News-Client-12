@@ -38,9 +38,9 @@ const Login = () => {
   };
 
   return (
-    <div className="flex my-10 justify-center items-center min-h-[calc(100vh-306px)]">
+    <div className="flex  justify-center items-center min-h-[calc(100vh-306px)]">
       <Helmet><title>OnTimeNews | Login Page </title> </Helmet>
-      <div className="flex w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg  lg:max-w-4xl ">
+      <div className="flex w-full my-20 max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg  lg:max-w-4xl ">
    
         <div className="w-full px-6 py-8 md:px-8 lg:w-2/3 mx-auto">
         

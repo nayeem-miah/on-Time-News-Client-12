@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { FaTrash } from "react-icons/fa";
 
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
@@ -32,7 +33,8 @@ const AllArticlesAdmin = () => {
     });
   };
   const handleIsPremium = item => {
-    axiosSecure.patch(`/isPremium-articles/${item._id}`).then(res => {
+    axiosSecure.patch(`/isPremium-articles/${item._id}`)
+    .then(res => {
       if (res.data.modifiedCount > 0) {
         refetch();
         Swal.fire({
