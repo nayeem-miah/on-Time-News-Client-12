@@ -1,6 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import AllPublisherCard from "./AllPublisherCard";
+import { Swiper, SwiperSlide } from "swiper/react";
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+// import required modules
+import { Pagination } from "swiper/modules";
 
 const AllPublisher = () => {
   const axiosSecure = useAxiosSecure();
@@ -18,15 +24,27 @@ const AllPublisher = () => {
           All Publisher
         </h4>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mx-0 lg:mx-5">
-        {publisher.map(publices => (
-          <AllPublisherCard
-            key={publices._id}
-            publices={publices}
-          ></AllPublisherCard>
-        ))}
+
+      <div>
+        <Swiper
+          slidesPerView={4}
+          spaceBetween={30}
+          centeredSlides={true}
+          pagination={{
+            clickable: true,
+          }}
+          modules={[Pagination]}
+          className="mySwiper lg:mb-24"
+        >
+          <div className="">
+            {publisher.map(publices => (
+              <SwiperSlide key={publices._id}>
+                <AllPublisherCard publices={publices}></AllPublisherCard>
+              </SwiperSlide>
+            ))}
+          </div>
+        </Swiper>
       </div>
-      
     </div>
   );
 };

@@ -1,4 +1,6 @@
+/* eslint-disable no-unused-vars */
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { useNavigate, useParams } from "react-router-dom";
 
 const Subscription = () => {
@@ -35,6 +37,9 @@ const Subscription = () => {
   };
   return (
     <div className="subscription-banner pt-20 min-h-[calc(100vh-180px)]">
+       <Helmet>
+        <title>OnTimeNews | subscription Page </title>
+      </Helmet>
       <div className="my-10 text-center">
         <h2 className="  text-2xl lg:text-3xl ">
           🎉 Subscribe Now for Exclusive Benefits! 🎉

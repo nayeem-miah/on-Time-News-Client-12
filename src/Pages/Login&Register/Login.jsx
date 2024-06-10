@@ -12,9 +12,10 @@ const Login = () => {
   const [error, setError] = useState("");
 
   const [success, setSuccess] = useState("");
+
   const location = useLocation();
   const navigate = useNavigate();
-// console.log(success);
+  // console.log(success);
   const handleLOgin = e => {
     e.preventDefault();
     const form = e.target;
@@ -35,21 +36,21 @@ const Login = () => {
 
         setError(error.massage);
       });
+    form.reset();
   };
 
   return (
     <div className="flex  justify-center items-center min-h-[calc(100vh-306px)]">
-      <Helmet><title>OnTimeNews | Login Page </title> </Helmet>
+      <Helmet>
+        <title>OnTimeNews | Login Page </title>
+      </Helmet>
       <div className="flex w-full my-20 max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg  lg:max-w-4xl ">
-   
         <div className="w-full px-6 py-8 md:px-8 lg:w-2/3 mx-auto">
-        
           <p className="py-5 lg:text-4xl text-2xl text-center text-gray-600 ">
             LogIn Now !
           </p>
 
-       <GoogleLogin></GoogleLogin>
-        
+          <GoogleLogin></GoogleLogin>
 
           <div className="flex items-center justify-between mt-4">
             <span className="w-1/5 border-b  lg:w-1/4"></span>
@@ -75,6 +76,7 @@ const Login = () => {
                 placeholder="enter email"
                 className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg    focus:border-blue-400 focus:ring-opacity-40  focus:outline-none focus:ring focus:ring-blue-300"
                 type="email"
+                required
               />
             </div>
 
@@ -95,6 +97,7 @@ const Login = () => {
                 placeholder="********"
                 className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg    focus:border-blue-400 focus:ring-opacity-40  focus:outline-none focus:ring focus:ring-blue-300"
                 type="password"
+                required
               />
             </div>
             {error && <p className="text-red-600">{error}</p>}

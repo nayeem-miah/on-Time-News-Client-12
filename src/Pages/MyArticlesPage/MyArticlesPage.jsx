@@ -4,6 +4,7 @@ import useAuth from "../../Hooks/useAuth";
 import { FaTrash } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const MyArticlesPage = () => {
   const axiosSecure = useAxiosSecure();
@@ -45,6 +46,9 @@ const MyArticlesPage = () => {
   return (
     <div className="min-h-[calc(100vh-180px)] ">
       <h3>My Articles Page:( {myArticles.length})</h3>
+      <Helmet>
+        <title>OnTimeNews | My Artcle Page </title>
+      </Helmet>
       <div className="overflow-x-auto w-full mt-20">
         <table className="table">
           {/* head */}

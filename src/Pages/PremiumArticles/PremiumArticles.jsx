@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import ArticlesCard from "../AllArticles/ArticlesCard/ArticlesCard";
+import { Helmet } from "react-helmet-async";
 
 const PremiumArticles = () => {
   const axiosSecure = useAxiosSecure();
@@ -16,6 +17,9 @@ const PremiumArticles = () => {
   return (
     <div className="min-h-[calc(100vh-180px)] pt-24">
       <div className="">
+      <Helmet>
+        <title>OnTimeNews | premium Articles Page </title>
+      </Helmet>
         <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 ">
           {AllArticles.map(
             articles =>

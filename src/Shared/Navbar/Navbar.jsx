@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Typewriter } from "react-simple-typewriter";
@@ -6,7 +5,7 @@ import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
 import { FaEdit } from "react-icons/fa";
 import useAdmin from "../../Hooks/useAdmin";
-import News from '../../assets/TrandingNews/nes.jpg'
+import News from "../../assets/TrandingNews/nes.jpg";
 const Navbar = () => {
   const { logout, user } = useAuth();
   const [open, setOpen] = useState();
@@ -23,7 +22,7 @@ const Navbar = () => {
           timer: 2000,
         });
         <NavLink to={"/"}></NavLink>;
-        // console.log(result.user);
+        console.log(result.user);
       })
       .catch(error => {
         console.error(error);
@@ -47,7 +46,7 @@ const Navbar = () => {
 
       {user && (
         <li>
-          <NavLink to="/subscription">Subscription</NavLink>
+          <NavLink to="/subscription/:price">Subscription</NavLink>
         </li>
       )}
       {/*  (this will be conditional show only if user is admin) */}
@@ -113,7 +112,7 @@ const Navbar = () => {
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal font-bold px-1">{nabLinks}</ul>
+        <ul className="menu menu-horizontal  font-bold px-1">{nabLinks}</ul>
       </div>
       <div className="navbar-end">
         <div className="relative md:border-l flex items-center  justify-end w-full md:w-auto pl-3 ">
