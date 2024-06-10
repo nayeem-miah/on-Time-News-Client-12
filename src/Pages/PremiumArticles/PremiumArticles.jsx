@@ -12,21 +12,21 @@ const PremiumArticles = () => {
       return res.data;
     },
   });
-  // console.log(AllArticles);
-  return (
-    <div>
-    
 
-      <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 ">
-        {AllArticles.map(
-          articles =>
-            articles.isPremium === "Premium" && (
-              <ArticlesCard
-                key={articles._id}
-                articles={articles}
-              ></ArticlesCard>
-            )
-        )}
+  return (
+    <div className="min-h-[calc(100vh-180px)] pt-24">
+      <div className="">
+        <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 ">
+          {AllArticles.map(
+            articles =>
+              articles.isPremium === "Premium" && (
+                <ArticlesCard
+                  key={articles._id}
+                  articles={articles}
+                ></ArticlesCard>
+              )
+          )}
+        </div>
       </div>
     </div>
   );

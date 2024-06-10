@@ -20,6 +20,7 @@ import PremiumArticles from "../Pages/PremiumArticles/PremiumArticles";
 import UpdateArticles from "../Pages/MyArticlesPage/UpdateArticles/UpdateArticles";
 import AllArticlesAdmin from "../Pages/Dashboard/AllArticles/AllArticlesAdmin";
 import Modal from "../Pages/Dashboard/AllArticles/modal";
+import PaymentPage from "../Pages/Subscription/PaymentPage";
 
 const router = createBrowserRouter([
   {
@@ -94,7 +95,8 @@ const router = createBrowserRouter([
             <UpdateArticles></UpdateArticles>
           </PrivetRouts>
         ),
-        loader: ({params})=>fetch(`http://localhost:5000/article/${params.id}`)
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/article/${params.id}`),
       },
       {
         path: "/premiumArticles",
@@ -103,6 +105,10 @@ const router = createBrowserRouter([
             <PremiumArticles></PremiumArticles>
           </PrivetRouts>
         ),
+      },
+      {
+        path: "/paymentPage",
+        element: <PaymentPage></PaymentPage>
       },
     ],
   },

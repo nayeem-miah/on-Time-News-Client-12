@@ -1,7 +1,7 @@
 import { Chart } from "react-google-charts";
 const Charts1 = () => {
   return (
-    <div className="my-10">
+    <div className="border-t-2">
       <Chart
         chartType="ScatterChart"
         data={[

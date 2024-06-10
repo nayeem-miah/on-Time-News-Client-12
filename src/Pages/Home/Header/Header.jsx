@@ -9,9 +9,12 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
-import { FaEye } from "react-icons/fa";
+
+import { Link } from "react-router-dom";
+import useAuth from "../../../Hooks/useAuth";
 const Header = () => {
   const axiosPublic = useAxiosPublic();
+  const { user } = useAuth();
   // const description =
   const { data: allArticles = [] } = useQuery({
     queryKey: ["allArticles"],
@@ -20,7 +23,6 @@ const Header = () => {
       return (await res).data;
     },
   });
-  // console.log(allArticles);
 
   return (
     <Swiper
@@ -40,27 +42,28 @@ const Header = () => {
     >
       {allArticles.map(article => (
         <SwiperSlide key={article._id}>
-          <div className="w-full my-10 mt-20 flex gap-3 bg-purple-200 rounded p-3">
-            <img
-              className="w-1/2 h-[170px] lg:h-[500px] rounded"
-              src={article.image}
-            />
-            <div className="lg:my-auto">
-              <div className="flex gap-5">
-                <div className="flex items-center gap-2 text-center ">
-                  <FaEye className="text-xl text-gray-500"></FaEye>
-                  <p className="text-gray-500"> {article?.viewCount}</p>
+          <div className="w-full my-10 mt-16 flex gap-3 bg-base-300 rounded ">
+            <div
+              className="hero min-h-[170px] h-[500px]"
+              style={{
+                backgroundImage: `url(${article.image})`,
+              }}
+            >
+              <div className="hero-overlay bg-opacity-60"></div>
+              <div className="hero-content text-center text-neutral-content">
+                <div className="max-w-xl">
+                  <h1 className="mb-5 text-3xl font-bold">{article.title}</h1>
+                  <p className="text-xs w-full lg:my-5 lg:text-[14px]">
+                    {article.description.slice(0, 200)}
+                    <p className="text-blue-500 link">#{article.tags}</p>
+                  </p>
+                  <Link to={!user ? "/" : "/allArticles"}>
+                    <button className="btn btn-outline btn-success border-0 border-b-2 border-t-2 mt-4">
+                      Explore Now
+                    </button>
+                  </Link>
                 </div>
-                <h3 className="text-xl lg:text-2xl text-center">
-                  {article.title}
-                </h3>
               </div>
-              <p className="text-xs lg:my-5 lg:text-[14px]">
-                {article.description.slice(0, 200)}
-                <p className="text-blue-500 link">
-                  #{article.tags}
-                </p>
-              </p>
             </div>
           </div>
         </SwiperSlide>

@@ -43,7 +43,7 @@ const MyArticlesPage = () => {
     });
   };
   return (
-    <div className="min-h-[calc(100vh-320px)] ">
+    <div className="min-h-[calc(100vh-180px)] ">
       <h3>My Articles Page:( {myArticles.length})</h3>
       <div className="overflow-x-auto w-full mt-20">
         <table className="table">

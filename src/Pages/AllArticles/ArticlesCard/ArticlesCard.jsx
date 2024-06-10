@@ -14,9 +14,9 @@ const ArticlesCard = ({ articles }) => {
     return res.data;
   };
   return (
-    <div className="my-10 mt-24">
+    <div className="my-5">
       {articles.isPremium === "Premium" ? (
-        <div className="w-full max-w-sm overflow-hidden h-full bg-white rounded-lg  dark:bg-blue-400 shadow-2xl hover:scale-105">
+        <div className="w-full max-w-sm overflow-hidden h-full bg-white rounded-lg  dark:bg-teal-200 shadow-2xl hover:scale-105">
           <img
             className="object-cover object-center w-full h-48"
             src={articles.image}
@@ -31,21 +31,23 @@ const ArticlesCard = ({ articles }) => {
           </div>
           <div className="px-6 py-4">
             <div className="flex items-center gap-4">
-              <h1 className="text-xl font-semibold text-gray-800 dark:text-white">
+              <h1 className="text-xl font-semibold text-gray-800 ">
                 {articles.publisher}
               </h1>
               <h4 className="flex items-center gap-3">
-                <FaEye className="text-xl text-gray-50"></FaEye>
-               <p className="text-gray-50"> {articles?.viewCount}</p>
+                <FaEye className="text-xl text-gray-800 "></FaEye>
+               <p className="text-gray-800"> {articles?.viewCount}</p>
               </h4>
             </div>
             <h1 className="text-xs font-semibold link text-blue-600">
               #{articles.tags}
             </h1>
             <p className="py-2 text-gray-700 dark:text-gray-400"></p>
-            <div className="flex items-center mt-4 text-gray-700 dark:text-gray-200">
+            <div className="flex items-center mt-4 text-gray-700">
               <h1 className="px-2 text-sm">{description}</h1>
             </div>
+            <p className="pt-3 border-b w-full"></p>
+
             <div className="mt-4">
               <div className="flex items-center">
                 <div className="flex items-center">
@@ -55,14 +57,14 @@ const ArticlesCard = ({ articles }) => {
                   />
                   <a
                     href="#"
-                    className="mx-2 font-semibold text-gray-700 dark:text-gray-200"
+                    className="mx-2 font-semibold text-gray-700"
                     tabIndex="0"
                     role="link"
                   >
                     {articles.displayName}
                   </a>
                 </div>
-                <span className="mx-1 text-xs text-gray-600 dark:text-gray-300">
+                <span className="mx-1 text-xs text-gray-600 ">
                   {articles.email}
                 </span>
               </div>
@@ -72,7 +74,7 @@ const ArticlesCard = ({ articles }) => {
                 onClick={() => {
                   handleViewCount(articles);
                 }}
-                className="btn  my-5 text-center w-full"
+                className="btn btn-outline btn-success border-0 border-b-2 border-t-2 mt-4"
               >
                 details
               </button>
@@ -106,6 +108,7 @@ const ArticlesCard = ({ articles }) => {
             <div className="flex items-center mt-4 text-gray-700 dark:text-gray-200">
               <h1 className="px-2 text-sm">{description}</h1>
             </div>
+            <p className="pt-3 border-b w-full"></p>
             <div className="mt-4">
               <div className="flex items-center">
                 <div className="flex items-center">
@@ -131,7 +134,7 @@ const ArticlesCard = ({ articles }) => {
                 onClick={() => {
                   handleViewCount(articles);
                 }}
-                className="btn  my-5 text-center w-full"
+                className="btn btn-outline btn-secondary border-0 border-b-2 border-t-2 mt-4"
               >
                 details
               </button>

@@ -18,7 +18,7 @@ const AllPublisher = () => {
           All Publisher
         </h4>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mx-0 lg:mx-5">
         {publisher.map(publices => (
           <AllPublisherCard
             key={publices._id}
@@ -26,6 +26,7 @@ const AllPublisher = () => {
           ></AllPublisherCard>
         ))}
       </div>
+      
     </div>
   );
 };

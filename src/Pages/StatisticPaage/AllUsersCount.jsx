@@ -17,11 +17,10 @@ const AllUsersCount = () => {
   const { reset, update } = useCountUp({
     ref: countUpRef,
     start: 0,
-
     delay: 10,
   });
   return (
-    <div className="bg-slate-200 lg:w-1/3 w-full rounded">
+    <div className="bg-slate-200  w-full rounded">
       <div className="text-6xl text-green-600  text-center" ref={countUpRef} />
       <div className="lg:flex justify-around p-5">
         <button
@@ -38,7 +37,9 @@ const AllUsersCount = () => {
           Count Start
         </button>
       </div>
-      <h3 className="text-4xl text-purple-500 p-4 text-center">All Users : ({users.length})</h3>
+      <h3 className="text-4xl text-purple-500 p-4 text-center">
+        All Users : ({users.length})
+      </h3>
     </div>
   );
 };

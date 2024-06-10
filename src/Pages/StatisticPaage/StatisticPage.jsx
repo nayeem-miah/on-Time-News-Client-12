@@ -8,7 +8,11 @@ const StatisticPage = () => {
           Statistic
         </h4>
       </div>
-      <AllUsersCount></AllUsersCount>
+     <div className="grid md:grid-cols-2 lg:grid-cols-3 grid-cols-1 gap-5 mx-5">
+     <AllUsersCount></AllUsersCount>
+     <AllUsersCount></AllUsersCount>
+     <AllUsersCount></AllUsersCount>
+     </div>
     </div>
   );
 };

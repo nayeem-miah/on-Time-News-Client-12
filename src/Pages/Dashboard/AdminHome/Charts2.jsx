@@ -22,13 +22,15 @@ export const options = {
 };
 const Charts2 = () => {
   return (
-    <Chart
-      chartType="BarChart"
-      width="100%"
-      height="400px"
-      data={data}
-      options={options}
-    />
+    <div className="border-t-2">
+      <Chart
+        chartType="BarChart"
+        width="100%"
+        height="400px"
+        data={data}
+        options={options}
+      />
+    </div>
   );
 };
 

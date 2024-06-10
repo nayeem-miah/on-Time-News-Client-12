@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Typewriter } from "react-simple-typewriter";
@@ -5,6 +6,7 @@ import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
 import { FaEdit } from "react-icons/fa";
 import useAdmin from "../../Hooks/useAdmin";
+import News from '../../assets/TrandingNews/nes.jpg'
 const Navbar = () => {
   const { logout, user } = useAuth();
   const [open, setOpen] = useState();
@@ -21,7 +23,7 @@ const Navbar = () => {
           timer: 2000,
         });
         <NavLink to={"/"}></NavLink>;
-        console.log(result.user);
+        // console.log(result.user);
       })
       .catch(error => {
         console.error(error);
@@ -97,7 +99,8 @@ const Navbar = () => {
             {nabLinks}
           </ul>
         </div>
-        <Link to={"/"} className="text-xl lg:text-2xl text-green-600">
+        <Link to={"/"} className="text-xl lg:text-2xl text-green-600 flex">
+          <img src={News} className="h-9 w-10 rounded opacity-60" />
           <Typewriter
             words={["OnTimeNews"]}
             loop={Infinity}
@@ -116,7 +119,7 @@ const Navbar = () => {
         <div className="relative md:border-l flex items-center  justify-end w-full md:w-auto pl-3 ">
           <div className=" w-[50px]"></div>
           {!user && (
-            <button className=" font-bold hover:border-b-green-700 p-1 text-white bg-purple-500 hover:bg-purple-700 rounded mr-5">
+            <button className=" font-bold hover:border-b-green-700 p-1 hidden lg:block text-white bg-purple-500 hover:bg-purple-700 rounded mr-5">
               <NavLink to="/register">Register</NavLink>
             </button>
           )}
