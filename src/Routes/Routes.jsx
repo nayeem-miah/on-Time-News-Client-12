@@ -56,10 +56,18 @@ const router = createBrowserRouter([
           fetch(`http://localhost:5000/articles/${params.id}`),
       },
       {
-        path: "/subscription",
+        path: '/subscription/:price',
         element: (
           <PrivetRouts>
             <Subscription></Subscription>
+          </PrivetRouts>
+        ),
+      },
+      {
+        path: '/payment/:totalPrice',
+        element: (
+          <PrivetRouts>
+            <PaymentPage></PaymentPage>
           </PrivetRouts>
         ),
       },

@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import axios from "axios";
 
-const CheckoutForm = ({ plansPrice }) => {
+const CheckoutForm = ({ totalPrice }) => {
   const stripe = useStripe();
   const elements = useElements();
   const axiosSecure = useAxiosSecure();
@@ -13,14 +13,14 @@ const CheckoutForm = ({ plansPrice }) => {
   const [clientSecret, setClientSecret] = useState("");
   const [cardError, setCardError] = useState("");
   const [processing, setProcessing] = useState(false);
-  // console.log(plansPrice);
+  console.log(totalPrice);
   useEffect(() => {
     //  fetch client secret
-    if (plansPrice?.price && plansPrice?.price > 1) {
-      getClientSecret({ price: plansPrice?.price });
+    if (totalPrice && totalPrice > 1) {
+      getClientSecret({ price: totalPrice });
     }
     //
-  }, [plansPrice?.price]);
+  }, [totalPrice?.price]);
   const getClientSecret = async price => {
     const { data } = await axios.post(
       `http://localhost:5000/create-payment-intent`,
@@ -85,7 +85,7 @@ const CheckoutForm = ({ plansPrice }) => {
         type="submit"
         disabled={!stripe || !clientSecret}
       >
-        Pay (${plansPrice?.price})
+        Pay (${totalPrice})
       </button>
     </form>
   );
