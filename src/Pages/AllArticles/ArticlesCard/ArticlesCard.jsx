@@ -36,7 +36,7 @@ const ArticlesCard = ({ articles }) => {
               </h1>
               <h4 className="flex items-center gap-3">
                 <FaEye className="text-xl text-gray-800 "></FaEye>
-               <p className="text-gray-800"> {articles?.viewCount}</p>
+                <p className="text-gray-800"> {articles?.viewCount}</p>
               </h4>
             </div>
             <h1 className="text-xs font-semibold link text-blue-600">

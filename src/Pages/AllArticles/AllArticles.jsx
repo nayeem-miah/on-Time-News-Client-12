@@ -10,7 +10,8 @@ const AllArticles = () => {
   // console.log(search);
 
   useEffect(() => {
-    axiosPublic(`/searchArticles?search=${search}`).then(res =>
+    axiosPublic(`/searchArticles?search=${search}`)
+    .then(res =>
       setAllArticles(res.data)
     );
   }, [search]);

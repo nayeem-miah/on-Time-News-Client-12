@@ -5,6 +5,7 @@ import { ImSpinner9 } from "react-icons/im";
 import { useEffect, useState } from "react";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import useAuth from "../../Hooks/useAuth";
+import toast from "react-hot-toast";
 
 const CheckoutForm = ({ totalPrice }) => {
   const stripe = useStripe();
@@ -90,13 +91,14 @@ const CheckoutForm = ({ totalPrice }) => {
         date: new Date(),
       };
       console.log(paymentInfo);
+      toast.success(`${user?.email} payment successfully `)
 
-      try {
-        axiosPublic.post("/payment", paymentInfo);
+      // try {
+      //   axiosPublic.post("/payment", paymentInfo);
       
-      } catch (error) {
-        console.log(error);
-      }
+      // } catch (error) {
+      //   console.log(error);
+      // }
       setProcessing(false);
     }
   };
