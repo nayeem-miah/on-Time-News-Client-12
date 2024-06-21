@@ -22,7 +22,7 @@ const AllArticles = () => {
   };
 
   return (
-    <div className="py-10">
+    <div className="py-10 min-h-[calc(100vh-180px)] ">
       <form onSubmit={handleSearch} className="mt-20">
         <input
           type="search"

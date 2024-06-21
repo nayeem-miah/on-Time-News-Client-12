@@ -25,10 +25,10 @@ const AllUsers = () => {
     });
   };
   return (
-    <div className="my-10">
-      <div className="flex justify-evenly my-4 mt-20">
+    <div className="">
+      <div className="flex justify-evenly my-4 mt-1 lg:mt-20">
         <h2 className="text-3xl">All Users</h2>
-        <h2 className="text-3xl">Total Users : {users.length}</h2>
+        <h2 className="text-3xl">Total Users : (<span className="text-green-600">{users.length}</span>)</h2>
       </div>
       <div className="overflow-x-auto">
         <table className="table w-full">

@@ -75,7 +75,7 @@ const AllArticlesAdmin = () => {
 
   return (
     <div className="my-10">
-      <div className="flex justify-evenly mt-28">
+      <div className="flex justify-evenly my-4 mt-1 lg:mt-20">
         <h2 className="text-3xl">All Articles</h2>
         <h2 className="text-3xl">Total Articles : {AllArticles.length}</h2>
       </div>

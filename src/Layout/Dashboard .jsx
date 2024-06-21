@@ -1,14 +1,17 @@
 import {
+  FaBars,
   FaGalacticRepublic,
   FaHouseMedical,
   FaRegNewspaper,
   FaUsers,
+  
 } from "react-icons/fa6";
 import { NavLink, Outlet } from "react-router-dom";
 import Navbar from "../Shared/Navbar/Navbar";
 import useAuth from "../Hooks/useAuth";
 import useAdmin from "../Hooks/useAdmin";
 import { useState } from "react";
+import { FaTimes } from "react-icons/fa";
 
 const Dashboard = () => {
   const { user } = useAuth();
@@ -21,26 +24,26 @@ const Dashboard = () => {
 
   return (
     <div>
-     <div className=" sm:hidden lg:block"> <Navbar /></div>
+       <div className=" sm:hidden lg:block"> <Navbar /></div>
       {/* Dashboard content */}
-      <div className="flex flex-col lg:flex-row min-h-screen ">
+      <div className="flex flex-col lg:flex-row min-h-screen">
         {/* Toggle button for small screens */}
-        <div className="lg:hidden p-4 border">
+        <div className="lg:hidden p-4">
           <button
             className="text-white bg-purple-500 p-2 rounded"
             onClick={toggleDrawer}
           >
-            {isDrawerOpen ? "Close Menu" : "Open Menu"}
+            {isDrawerOpen ? <FaTimes /> : <FaBars />}
           </button>
         </div>
 
         {/* Sidebar */}
         <div
-          className={`w-full lg:w-64 bg-purple-500 lg:fixed lg:min-h-full  lg:mt-0 ${
+          className={` lg:w-64 bg-purple-500 lg:fixed lg:min-h-full  lg:mt-0 ${
             isDrawerOpen ? "block" : "hidden"
           } lg:block`}
         >
-          <ul className="menu text-black font-bold p-4 mt-24">
+          <ul className="menu text-black font-bold p-4 mt-32">
             {isAdmin && (
               <>
                 <li>
