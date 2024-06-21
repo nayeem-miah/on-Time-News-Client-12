@@ -1,4 +1,6 @@
+import AllPreemiumUserCount from "./AllPreemiumUserCount";
 import AllUsersCount from "./AllUsersCount";
+import TotalViewweCount from "./TotalViewweCount";
 
 const StatisticPage = () => {
   return (
@@ -10,8 +12,8 @@ const StatisticPage = () => {
       </div>
      <div className="grid md:grid-cols-2 lg:grid-cols-3 grid-cols-1 gap-5 mx-5">
      <AllUsersCount></AllUsersCount>
-     <AllUsersCount></AllUsersCount>
-     <AllUsersCount></AllUsersCount>
+     <AllPreemiumUserCount></AllPreemiumUserCount>
+     <TotalViewweCount></TotalViewweCount>
      </div>
     </div>
   );

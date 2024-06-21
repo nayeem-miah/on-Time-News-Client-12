@@ -4,7 +4,7 @@ import React from "react";
 import { useCountUp } from "react-countup";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
-const AllUsersCount = () => {
+const AllPreemiumUserCount = () => {
   const axiosPublic = useAxiosPublic();
   const { data: users = [] } = useQuery({
     queryKey: ["users"],
@@ -17,6 +17,7 @@ const AllUsersCount = () => {
   const { reset, update } = useCountUp({
     ref: countUpRef,
     start: 0,
+    end:8,
     delay: 10,
   });
   return (
@@ -32,16 +33,16 @@ const AllUsersCount = () => {
 
         <button
           className="text-3xl text-green-600 btn"
-          onClick={() => update(users.length)}
+          onClick={() => update(8)}
         >
           Count Start
         </button>
       </div>
       <h3 className="text-2xl text-purple-500 p-4 text-center">
-        All Users : ({users.length})
+        All Premium Users  : (8)
       </h3>
     </div>
   );
 };
 
-export default AllUsersCount;
+export default AllPreemiumUserCount;
