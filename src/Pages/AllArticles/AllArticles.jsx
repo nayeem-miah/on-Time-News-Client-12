@@ -1,17 +1,21 @@
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import ArticlesCard from "./ArticlesCard/ArticlesCard";
 import { useEffect, useState } from "react";
-
+import { RiseLoader } from "react-spinners";
 const AllArticles = () => {
   const axiosPublic = useAxiosPublic();
   const [AllArticles, setAllArticles] = useState();
   const [search = [], setSearch] = useState("");
-  // const navi
-  // console.log(search);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axiosPublic(`/searchArticles?search=${search}`)
-    .then(res =>
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+  }, []);
+
+  useEffect(() => {
+    axiosPublic(`/searchArticles?search=${search}`).then(res =>
       setAllArticles(res.data)
     );
   }, [search]);
@@ -34,6 +38,11 @@ const AllArticles = () => {
         <input className="btn btn-success" type="submit" value="search" />
       </form>
       {/* <UserFilter></UserFilter> */}
+
+      <div className="flex items-center justify-center ">
+        <RiseLoader color={"#123abc"} loading={loading} size={15} />
+      </div>
+
       <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 my-10">
         {AllArticles?.map(
           articles =>

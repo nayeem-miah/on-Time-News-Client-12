@@ -41,7 +41,7 @@ const Subscription = () => {
         <title>OnTimeNews | subscription Page </title>
       </Helmet>
       <div className="my-10 text-center">
-        <h2 className="  text-2xl lg:text-3xl ">
+        <h2 className="  text-2xl lg:text-3xl text-green-500">
           🎉 Subscribe Now for Exclusive Benefits! 🎉
         </h2>
         <p>Unlock Premium Content and Features Today!</p>

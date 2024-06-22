@@ -24,7 +24,7 @@ const Dashboard = () => {
 
   return (
     <div>
-       <div className=" sm:hidden lg:block"> <Navbar /></div>
+       <div className="lg:block hidden"> <Navbar /></div>
       {/* Dashboard content */}
       <div className="flex flex-col lg:flex-row min-h-screen">
         {/* Toggle button for small screens */}
@@ -39,7 +39,7 @@ const Dashboard = () => {
 
         {/* Sidebar */}
         <div
-          className={` lg:w-64 bg-purple-500 lg:fixed lg:min-h-full  lg:mt-0 ${
+          className={` lg:w-64 w-1/2 bg-purple-500 lg:fixed lg:min-h-full  lg:mt-0 ${
             isDrawerOpen ? "block" : "hidden"
           } lg:block`}
         >
