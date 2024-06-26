@@ -50,7 +50,7 @@ const CheckoutForm = ({ totalPrice }) => {
       return;
     }
 
-    // Use your card Element with other Stripe.js APIs
+    // Use your card Element with other Stripe.js APIs --
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: "card",
       card,
