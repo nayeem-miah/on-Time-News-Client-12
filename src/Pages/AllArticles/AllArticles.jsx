@@ -1,3 +1,4 @@
+import Loader from "../../Compoents/EmptyState/loader";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import ArticlesCard from "./ArticlesCard/ArticlesCard";
 import { useEffect, useState } from "react";
@@ -26,34 +27,36 @@ const AllArticles = () => {
   };
 
   return (
-    <div className="py-10 min-h-[calc(100vh-180px)] ">
-      <form onSubmit={handleSearch} className="mt-20">
-        <input
-          type="search"
-          name="search"
-          placeholder="search here"
-          required
-          className="input input-bordered input-accent w-full lg:max-w-xl max-w-48 md:max-w-xl"
-        />
-        <input className="btn btn-success" type="submit" value="search" />
-      </form>
-      {/* <UserFilter></UserFilter> */}
+    <div>
+      {loading ? (
+        <Loader></Loader>
+      ) : (
+        <div className="py-10 min-h-[calc(100vh-180px)] ">
+          <form onSubmit={handleSearch} className="mt-20">
+            <input
+              type="search"
+              name="search"
+              placeholder="search here"
+              required
+              className="input input-bordered input-accent w-full lg:max-w-xl max-w-48 md:max-w-xl"
+            />
+            <input className="btn btn-success" type="submit" value="search" />
+          </form>
+          {/* <UserFilter></UserFilter> */}
 
-      <div className="flex items-center justify-center ">
-        <RiseLoader color={"#123abc"} loading={loading} size={15} />
-      </div>
-
-      <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 my-10">
-        {AllArticles?.map(
-          articles =>
-            articles.status === "approve" && (
-              <ArticlesCard
-                key={articles._id}
-                articles={articles}
-              ></ArticlesCard>
-            )
-        )}
-      </div>
+          <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 my-10">
+            {AllArticles?.map(
+              articles =>
+                articles.status === "approve" && (
+                  <ArticlesCard
+                    key={articles._id}
+                    articles={articles}
+                  ></ArticlesCard>
+                )
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 };

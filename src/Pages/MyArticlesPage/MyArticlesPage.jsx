@@ -5,10 +5,15 @@ import { FaTrash } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import EmptyState from "../../Compoents/EmptyState/EmptyState";
+import { useEffect, useState } from "react";
+import { ScaleLoader } from "react-spinners";
+import Loader from "../../Compoents/EmptyState/loader";
 
 const MyArticlesPage = () => {
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
+  const [loading, setLoading] = useState(true);
 
   const { data: myArticles = [], refetch } = useQuery({
     queryKey: ["myArticles"],
@@ -43,64 +48,86 @@ const MyArticlesPage = () => {
       }
     });
   };
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+  }, []);
   return (
-    <div className="min-h-[calc(100vh-180px)] ">
-      <h3>My Articles Page:( {myArticles.length})</h3>
-      <Helmet>
-        <title>OnTimeNews | My Artcle Page </title>
-      </Helmet>
-      <div className="overflow-x-auto w-full mt-20">
-        <table className="table">
-          {/* head */}
-          <thead>
-            <tr className="text-xs font-bold border-b-2">
-              <th>serial no</th>
-              <th>article title</th>
-              <th>status</th>
-              <th>isPremium</th>
-              <th>details</th>
-              <th>update</th>
-              <th>delete</th>
-            </tr>
-          </thead>
-          <tbody>
-            {myArticles.map((item, i) => (
-              <tr key={item._id}>
-                <td> {(i = i + 1)}</td>
-                <td>{item.title}</td>
-                <td>{item.status}</td>
-                <th>
-                  <p>{item.isPremium}</p>
-                </th>
-                <th>
-                  <Link to={`/articlesDetails/${item._id}`}>
-                    <button className="btn bg-purple-500 text-black hover:text-white">
-                      details
-                    </button>
-                  </Link>
-                </th>
-                <th>
-                  <Link to={`/updateArticles/${item._id}`}>
-                    <button className="btn bg-purple-500 text-black hover:text-white">
-                      update
-                    </button>
-                  </Link>
-                </th>
-                <th>
-                  <button
-                    onClick={() => {
-                      handleDelete(item._id);
-                    }}
-                    className="btn btn-ghost btn-lg"
-                  >
-                    <FaTrash></FaTrash>
-                  </button>
-                </th>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+    <div>
+      {loading ? (
+        <Loader></Loader>
+      ) : (
+        <div className="min-h-[calc(100vh-180px)] ">
+          <h3>My Articles Page:( {myArticles.length})</h3>
+          <Helmet>
+            <title>OnTimeNews | My Artcle Page </title>
+          </Helmet>
+          <div className="overflow-x-auto w-full mt-20">
+            {myArticles.length > 0 ? (
+              <table className="table">
+                {/* head */}
+                <thead>
+                  <tr className="text-xs font-bold border-b-2">
+                    <th>serial no</th>
+                    <th>article title</th>
+                    <th>status</th>
+                    <th>isPremium</th>
+                    <th>details</th>
+                    <th>update</th>
+                    <th>delete</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {myArticles.map((item, i) => (
+                    <tr key={item._id}>
+                      <td> {(i = i + 1)}</td>
+                      <td>{item.title}</td>
+                      <td>{item.status}</td>
+                      <th>
+                        <p>{item.isPremium}</p>
+                      </th>
+                      <th>
+                        <Link to={`/articlesDetails/${item._id}`}>
+                          <button className="btn bg-purple-500 text-black hover:text-white">
+                            details
+                          </button>
+                        </Link>
+                      </th>
+                      <th>
+                        <Link to={`/updateArticles/${item._id}`}>
+                          <button className="btn bg-purple-500 text-black hover:text-white">
+                            update
+                          </button>
+                        </Link>
+                      </th>
+                      <th>
+                        <button
+                          onClick={() => {
+                            handleDelete(item._id);
+                          }}
+                          className="btn btn-ghost btn-lg"
+                        >
+                          <FaTrash></FaTrash>
+                        </button>
+                      </th>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            ) : (
+              <EmptyState
+                message={"No Articles  Available!"}
+                address={"/"}
+                label={"Go to Home"}
+                address2={"/addArticles"}
+                label2={"Add Articles"}
+              ></EmptyState>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 };
