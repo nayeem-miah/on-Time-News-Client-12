@@ -47,7 +47,7 @@ This project is a web application featuring article publishing, user subscriptio
 
 ### Admin Dashboard (Admin)
 - Sidebar links to all users, all articles, and add publisher.
-- Dynamic and static charts using `react-google-charts`.
+- Dynamic and static charts 
 
 ## Authentication
 - Email/password and social login.
