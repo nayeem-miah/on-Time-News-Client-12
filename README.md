@@ -1,7 +1,5 @@
 # On Time News 
-- user Name : hablu
-- email : hablu@gmail.com
-- password : Nayeem123$
+
 
 - live link :[https://b9a12-ontimenews.web.app/](https://b9a12-ontimenews.web.app/) 
 
