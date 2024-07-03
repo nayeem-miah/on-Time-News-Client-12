@@ -56,3 +56,12 @@ This project is a web application featuring article publishing, user subscriptio
 
 
 This concise overview covers the main features and structure of the application.
+
+
+## If one wants to clone a project and run it locally, it mentions the steps to follow
+- git clone this projectscd react-project
+- cd react-project
+- npm install
+- npm run dev
+
+
