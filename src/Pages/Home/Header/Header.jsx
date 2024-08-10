@@ -12,17 +12,20 @@ import { useQuery } from "@tanstack/react-query";
 
 import { Link } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
+import Loader from "../../../Compoents/EmptyState/loader";
 const Header = () => {
   const axiosPublic = useAxiosPublic();
   const { user } = useAuth();
   // const description =
-  const { data: allArticles = [] } = useQuery({
+  const { data: allArticles = [],isLoading } = useQuery({
     queryKey: ["allArticles"],
     queryFn: async () => {
       const res = axiosPublic.get("/articlesCount");
       return (await res).data;
     },
   });
+
+  if(isLoading) return <Loader></Loader>
 
   return (
     <Swiper
@@ -57,7 +60,7 @@ const Header = () => {
                     {article.description.slice(0, 200)}
                     <p className="text-blue-500 link">#{article.tags}</p>
                   </p>
-                  <Link to={!user ? "/" : "/allArticles"}>
+                  <Link to={!user ? "/login" : "/allArticles"}>
                     <button className="btn btn-outline btn-success border-0 border-b-2 border-t-2 mt-4">
                       Explore Now
                     </button>
