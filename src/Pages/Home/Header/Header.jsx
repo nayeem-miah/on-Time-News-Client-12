@@ -16,7 +16,6 @@ import Loader from "../../../Compoents/EmptyState/loader";
 const Header = () => {
   const axiosPublic = useAxiosPublic();
   const { user } = useAuth();
-  // const description =
   const { data: allArticles = [],isLoading } = useQuery({
     queryKey: ["allArticles"],
     queryFn: async () => {
