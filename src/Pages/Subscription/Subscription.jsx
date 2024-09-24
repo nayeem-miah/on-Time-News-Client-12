@@ -19,9 +19,10 @@ const Subscription = () => {
 
   //convert it in days
   const periodValues = {
-    1: 10 / (24 * 60),
-    5: 50,
-    10: 100,
+
+    7: 7,
+    30: 30,
+    365: 365,
   };
 
   // Handle the subscribe button click
@@ -67,9 +68,9 @@ const Subscription = () => {
                 <option value="" disabled>
                   Select period
                 </option>
-                <option value="1">1 minute</option>
-                <option value="5">5 days</option>
-                <option value="10">10 days</option>
+                <option value="7">7 days</option>
+                <option value="30">30 days</option>
+                <option value="365">1 year</option>
               </select>
 
               <button

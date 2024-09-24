@@ -38,7 +38,6 @@ const Home = () => {
             </h4>
           </div>
           <Plans></Plans>
-          {/* extra section */}
           <div className="my-9">
             <Newsletter></Newsletter>
           </div>

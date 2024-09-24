@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Typewriter } from "react-simple-typewriter";
 import useAuth from "../../Hooks/useAuth";
@@ -6,14 +6,16 @@ import Swal from "sweetalert2";
 import { FaEdit } from "react-icons/fa";
 import useAdmin from "../../Hooks/useAdmin";
 import News from "../../assets/TrandingNews/nes.jpg";
+
 const Navbar = () => {
   const { logout, user } = useAuth();
-  const [open, setOpen] = useState();
+  const [open, setOpen] = useState(false);
   const [isAdmin] = useAdmin();
+  const modalRef = useRef(null); // Ref to track modal element
 
   const handleLogout = () => {
     logout()
-      .then(result => {
+      .then((result) => {
         Swal.fire({
           position: "top-center",
           icon: "success",
@@ -24,11 +26,24 @@ const Navbar = () => {
         <NavLink to={"/"}></NavLink>;
         console.log(result.user);
       })
-      .catch(error => {
+      .catch((error) => {
         console.error(error);
         setOpen(false);
       });
   };
+
+  // Close modal if click happens outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (modalRef.current && !modalRef.current.contains(event.target)) {
+        setOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [modalRef]);
 
   const nabLinks = (
     <>
@@ -57,8 +72,7 @@ const Navbar = () => {
           </li>
         )}
       </span>
-      {/* this will be conditional show only If user taken
-        Subscription */}
+      {/* this will be conditional show only If user taken Subscription */}
       {user && (
         <li>
           <NavLink to="/premiumArticles">Premium Articles</NavLink>
@@ -71,11 +85,12 @@ const Navbar = () => {
       )}
     </>
   );
+
   return (
-    <div className="navbar bg-base-300 shadow-2xl   fixed z-10 min-h-[calc(100vh-100px)  max-w-screen-xl mx-auto border-b-2">
+    <div className="navbar bg-base-300 shadow-2xl fixed z-10 max-w-screen-xl mx-auto border-b-2">
       <div className="navbar-start">
         <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn  btn-ghost lg:hidden">
+          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -112,13 +127,13 @@ const Navbar = () => {
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal  font-bold px-1">{nabLinks}</ul>
+        <ul className="menu menu-horizontal font-bold px-1">{nabLinks}</ul>
       </div>
       <div className="navbar-end">
-        <div className="relative md:border-l flex items-center  justify-end w-full md:w-auto pl-3 ">
+        <div className="relative md:border-l flex items-center justify-end w-full md:w-auto pl-3">
           <div className=" w-[50px]"></div>
           {!user && (
-            <button className=" font-bold hover:border-b-green-700 p-1 hidden lg:block text-white bg-purple-500 hover:bg-purple-700 rounded mr-5">
+            <button className="font-bold hover:border-b-green-700 p-1 hidden lg:block text-white bg-purple-500 hover:bg-purple-700 rounded mr-5">
               <NavLink to="/register">Register</NavLink>
             </button>
           )}
@@ -136,51 +151,52 @@ const Navbar = () => {
           ) : (
             <Link
               to={"/login"}
-              className="bg-purple-500 hover:bg-purple-700  duration-200 text-white font-bold px-4 xl:px-6 py-1 rounded"
+              className="bg-purple-500 hover:bg-purple-700 duration-200 text-white font-bold px-4 xl:px-6 py-1 rounded"
             >
               Login
             </Link>
           )}
 
-          <div
-            className={`absolute text-center ${
-              open ? "block" : "hidden"
-            } flex flex-col justify-center items-center gap-4  shadow-lg bg-white dark:bg-[#120505] px-8 py-4 top-16 dark:text-white z-50`}
-          >
-            <img
-              src={user?.photoURL}
-              className="w-32 h-32 mx-auto rounded-full dark:bg-gray-500 aspect-square"
-            />
-            <div className="flex justify-between items-center">
-              <p className="text-lg font-semibold mr-4">{user?.displayName}</p>
-              <p>
-                <Link to={"/updateUserProfile"}>
-                  <FaEdit className="text-xl"></FaEdit>
-                </Link>
-              </p>
-            </div>
+          {open && (
+            <div
+              ref={modalRef} // Use ref to track this modal
+              className="absolute text-center flex flex-col justify-center items-center gap-4 shadow-lg bg-white dark:bg-[#120505] px-8 py-4 top-16 dark:text-white z-50"
+            >
+              <img
+                src={user?.photoURL}
+                className="w-32 h-32 mx-auto rounded-full dark:bg-gray-500 aspect-square"
+              />
+              <div className="flex justify-between items-center">
+                <p className="text-lg font-semibold mr-4">{user?.displayName}</p>
+                <p>
+                  <Link to={"/updateUserProfile"}>
+                    <FaEdit className="text-xl"></FaEdit>
+                  </Link>
+                </p>
+              </div>
 
-            <p className="text-lg font-semibold">{user?.email}</p>
-            <div className="flex justify-between gap-6">
-              <button>
-                {isAdmin ? (
-                  <p className="p-2 px-4 text-xs font-bold text-white bg-purple-500 rounded">
-                    Admin
-                  </p>
-                ) : (
-                  <p className="p-2 px-4 text-xs font-bold text-white bg-purple-500 rounded">
-                    normal user
-                  </p>
-                )}
-              </button>
-              <button
-                onClick={() => handleLogout()}
-                className="bg-purple-500 hover:bg-purple-900 duration-200 text-white font-bold px-4 xl:px-6 py-1 rounded cursor-pointer"
-              >
-                logout
-              </button>
+              <p className="text-lg font-semibold">{user?.email}</p>
+              <div className="flex justify-between gap-6">
+                <button>
+                  {isAdmin ? (
+                    <p className="p-2 px-4 text-xs font-bold text-white bg-purple-500 rounded">
+                      Admin
+                    </p>
+                  ) : (
+                    <p className="p-2 px-4 text-xs font-bold text-white bg-purple-500 rounded">
+                      normal user
+                    </p>
+                  )}
+                </button>
+                <button
+                  onClick={handleLogout}
+                  className="bg-purple-500 hover:bg-purple-900 duration-200 text-white font-bold px-4 xl:px-6 py-1 rounded cursor-pointer"
+                >
+                  logout
+                </button>
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
     </div>

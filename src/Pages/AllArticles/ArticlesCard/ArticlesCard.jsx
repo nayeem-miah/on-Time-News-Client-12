@@ -2,7 +2,9 @@ import { FaEye } from "react-icons/fa";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 
 import { Link } from "react-router-dom";
-
+import "aos/dist/aos.css";
+import { useEffect } from "react";
+import Aos from "aos";
 const ArticlesCard = ({ articles }) => {
   const description = articles.description.slice(0, 100);
   const axiosPublic = useAxiosPublic();
@@ -13,12 +15,16 @@ const ArticlesCard = ({ articles }) => {
     const res = await axiosPublic.patch(`/viewCount/${item._id}`, newData);
     return res.data;
   };
+  useEffect(() => {
+    Aos.init();
+  }, []);
+
   return (
-    <div className="my-5">
+    <div className="my-5 " data-aos="fade-up" data-aos-duration="2000">
       {articles.isPremium === "Premium" ? (
-        <div className="w-full max-w-sm overflow-hidden h-full bg-white rounded-lg  dark:bg-teal-200 shadow-2xl hover:scale-105">
+        <div className="w-full max-w-sm overflow-hidden  bg-white rounded-lg  dark:bg-teal-200 shadow-2xl  h-full">
           <img
-            className="object-cover object-center w-full h-48"
+            className="object-cover object-center w-full h-48 hover:scale-125"
             src={articles.image}
           />
           <div className="flex items-center px-6 py-3 bg-gray-900">
@@ -82,9 +88,9 @@ const ArticlesCard = ({ articles }) => {
           </div>
         </div>
       ) : (
-        <div className="w-full max-w-sm overflow-hidden bg-white rounded-lg  dark:bg-gray-800 shadow-2xl hover:scale-105">
+        <div className="w-full max-w-sm overflow-hidden bg-white rounded-lg  dark:bg-gray-800 shadow-2xl  h-full">
           <img
-            className="object-cover object-center w-full h-48"
+            className="object-cover object-center w-full h-48 hover:scale-125"
             src={articles.image}
           />
           <div className="flex items-center px-6 py-3 bg-gray-900">
