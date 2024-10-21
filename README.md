@@ -1,7 +1,10 @@
 # On Time News 
 
 
-- live link :[https://b9a12-ontimenews.web.app/](https://b9a12-ontimenews.web.app/) 
+- live link :[https://b9a12-ontimenews.web.app/](https://b9a12-ontimenews.web.app/)
+
+
+###admin login
 admin email : fexybipihe@mailinator.com
 pass : Pa$$w0rd!
 ## use language
