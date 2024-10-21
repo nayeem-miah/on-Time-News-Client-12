@@ -2,7 +2,8 @@
 
 
 - live link :[https://b9a12-ontimenews.web.app/](https://b9a12-ontimenews.web.app/) 
-
+admin email : fexybipihe@mailinator.com
+pass : Pa$$w0rd!
 ## use language
 - react js
 - node js
