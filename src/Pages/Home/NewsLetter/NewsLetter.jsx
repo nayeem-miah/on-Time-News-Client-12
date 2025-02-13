@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 function Newsletter() {
   const [email, setEmail] = useState("");
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     toast.success("Thank you for subscribing to our newsletter");
 
@@ -12,30 +12,26 @@ function Newsletter() {
   };
 
   return (
-    <section className="bg-gray-100 py-12">
-      <div className="max-w-4xl mx-auto px-4">
-        <h2 className="text-2xl font-bold text-center text-gray-800 mb-4">
+    <section className=" py-16 bg-gray-800">
+      <div className="max-w-4xl mx-auto px-4 text-center text-white">
+        <h2 className="text-3xl font-bold mb-4">
           Subscribe to Our Newsletter
         </h2>
-        <p className="text-gray-600 mb-4 text-center">
-          Get the latest updates and offers directly to your inbox.
+        <p className="text-lg mb-6">
+          Stay up-to-date with the latest news and exclusive offers delivered to your inbox.
         </p>
-        <form
-          onSubmit={handleSubmit}
-          className="flex items-center max-w-lg mx-auto"
-        >
+        <form onSubmit={handleSubmit} className="flex items-center justify-center space-x-4">
           <input
             type="email"
             value={email}
-            onChange={e => setEmail(e.target.value)}
-            // defaultValue={user?.email}
-            placeholder="Your email address"
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Enter your email address"
             required
-            className="py-3 px-4 w-full border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent"
+            className="py-3 px-6 w-full sm:w-96 border border-gray-300 rounded-lg text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition duration-300 ease-in-out"
           />
           <button
             type="submit"
-            className="bg-green-500 text-white px-6 py-3 rounded-r-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-2"
+            className=" py-2 px-5 bg-gradient-to-r from-green-400 to-blue-500 text-white font-semibold rounded-lg shadow-md hover:from-green-500 hover:to-blue-600 transition-all duration-300"
           >
             Subscribe
           </button>
