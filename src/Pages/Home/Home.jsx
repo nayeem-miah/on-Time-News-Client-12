@@ -7,6 +7,7 @@ import Plans from "../plans/plans";
 import { useEffect, useState } from "react";
 
 import Loader from "../../Compoents/EmptyState/loader";
+import FAQSection from "./Faq/Faq";
 
 const Home = () => {
   const [loading, setLoading] = useState(true);
@@ -38,6 +39,7 @@ const Home = () => {
             </h4>
           </div>
           <Plans></Plans>
+          <FAQSection/>
           <div className="my-9">
             <Newsletter></Newsletter>
           </div>
