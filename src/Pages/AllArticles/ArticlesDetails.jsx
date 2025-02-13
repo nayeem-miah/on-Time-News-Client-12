@@ -33,7 +33,7 @@ const ArticlesDetails = () => {
 
         {/* Article Content */}
         <div className="mt-6">
-          <h2 className="text-5xl font-extrabold text-gray-900 leading-tight tracking-wide">
+          <h2 className="lg:text-4xl md:text-3xl text-2xl font-extrabold text-gray-900 leading-tight tracking-wide">
             {data.title}
           </h2>
           <p className="text-lg text-gray-600 mt-2">Publisher: {data.publisher}</p>
