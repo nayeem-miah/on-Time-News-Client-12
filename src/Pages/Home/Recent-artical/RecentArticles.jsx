@@ -20,7 +20,6 @@ const RecentArticles = () => {
   
 
 if(loading) return <Loader/>
-console.log(AllArticles);
     return (
         <div>
     <div className="md:w-4/12 w-36 mx-auto text-center my-8">

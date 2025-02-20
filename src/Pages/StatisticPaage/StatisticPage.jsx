@@ -1,6 +1,5 @@
-import AllPreemiumUserCount from "./AllPreemiumUserCount";
 import AllUsersCount from "./AllUsersCount";
-import TotalViewweCount from "./TotalViewweCount";
+import TotalArticles from "./TotalArticcles";
 
 const StatisticPage = () => {
   return (
@@ -10,10 +9,9 @@ const StatisticPage = () => {
           Statistic
         </h4>
       </div>
-     <div className="grid md:grid-cols-2 lg:grid-cols-3 grid-cols-1 gap-5 mx-5">
+     <div className="flex gap-5 mx-5">
      <AllUsersCount></AllUsersCount>
-     <AllPreemiumUserCount></AllPreemiumUserCount>
-     <TotalViewweCount></TotalViewweCount>
+     <TotalArticles></TotalArticles>
      </div>
     </div>
   );

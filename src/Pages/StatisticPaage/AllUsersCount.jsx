@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
-
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { useCountUp } from "react-countup";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import { useInView } from "react-intersection-observer";
 
 const AllUsersCount = () => {
   const axiosPublic = useAxiosPublic();
@@ -13,33 +13,32 @@ const AllUsersCount = () => {
       return res.data;
     },
   });
-  const countUpRef = React.useRef(null);
-  const { reset, update } = useCountUp({
+
+  const countUpRef = useRef(null);
+  const { start } = useCountUp({
     ref: countUpRef,
     start: 0,
-    delay: 10,
+    end: users.length,
+    duration: 2,
   });
-  return (
-    <div className="bg-slate-200  w-full rounded">
-      <div className="text-6xl text-green-600  text-center" ref={countUpRef} />
-      <div className="lg:flex justify-around p-5">
-        <button
-          className="text-3xl text-green-600 btn lg:my-0 my-3 mr-6"
-          onClick={reset}
-        >
-          Reset
-        </button>
 
-        <button
-          className="text-3xl text-green-600 btn"
-          onClick={() => update(users.length)}
-        >
-          Count Start
-        </button>
-      </div>
-      <h3 className="text-2xl text-purple-500 p-4 text-center">
-        All Users : ({users.length})
-      </h3>
+  const { ref, inView } = useInView({ triggerOnce: true });
+
+  useEffect(() => {
+    if (inView) {
+      start();
+    }
+  }, [inView, start]);
+
+  return (
+    <div ref={ref} className="bg-gradient-to-r from-gray-800 to-gray-900 text-white p-8 rounded-lg shadow-lg w-full">
+      <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center text-green-400 mb-4">
+        Total Users
+      </h2>
+      <div className="text-7xl font-extrabold text-center text-green-500" ref={countUpRef} />
+      {/* <h3 className="text-xl text-purple-400 font-semibold text-center mt-6">
+        All Users: ({users.length})
+      </h3> */}
     </div>
   );
 };

@@ -32,9 +32,9 @@ const Home = () => {
 
           <AllPublisher></AllPublisher>
           <RecentArticles/>
-          {/* <div className="my-10">
+          <div className="my-10">
             <StatisticPage></StatisticPage>
-          </div> */}
+          </div>
           <div className="md:w-4/12 w-36 mx-auto text-center my-8">
             <h4 className="text-3xl text-purple-500 my-6 text-center uppercase border-b-4 py-4">
               Plans
