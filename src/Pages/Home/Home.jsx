@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 
 import Loader from "../../Compoents/EmptyState/loader";
 import FAQSection from "./Faq/Faq";
+import RecentArticles from "./Recent-artical/RecentArticles";
 
 const Home = () => {
   const [loading, setLoading] = useState(true);
@@ -18,9 +19,9 @@ const Home = () => {
   }, []);
   return (
     <div>
-      {loading ? (
+      {/* {loading ? (
         <Loader></Loader>
-      ) : (
+      ) : ( */}
         <div>
           <Helmet>
             <title>OnTimeNews | Home Page </title>
@@ -30,21 +31,22 @@ const Home = () => {
           <Header></Header>
 
           <AllPublisher></AllPublisher>
-          <div className="my-10">
+          <RecentArticles/>
+          {/* <div className="my-10">
             <StatisticPage></StatisticPage>
-          </div>
+          </div> */}
           <div className="md:w-4/12 w-36 mx-auto text-center my-8">
             <h4 className="text-3xl text-purple-500 my-6 text-center uppercase border-b-4 py-4">
               Plans
             </h4>
           </div>
-          <Plans></Plans>
+       
           <FAQSection/>
           <div className="my-10">
             <Newsletter></Newsletter>
           </div>
         </div>
-      )}
+      {/* )} */}
     </div>
   );
 };

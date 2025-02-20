@@ -51,18 +51,18 @@ const Plans = () => {
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ">
-      <div className="max-w-full rounded overflow-hidden shadow-lg m-4 border-purple-500 border">
+      <div className="max-w-full rounded overflow-hidden shadow-lg m-4 hover:shadow-2xl">
         <div className="bg-gray-200 p-4 flex justify-between items-center">
           <h2 className="text-xl font-bold text-gray-800">{cardData.title}</h2>
           <p className="text-xl font-bold text-gray-800">${cardData.price}</p>
         </div>
         <div className="p-6">
-          <p className="text-gray-600 mb-4">{cardData.description}</p>
+          <p className="text-gray-300 mb-4">{cardData.description}</p>
           <ul className="mb-4">
             {cardData.features.map((feature, index) => (
               <li key={index.id} className="flex items-center mb-2">
                 <svg
-                  className="w-6 h-6 text-gray-600 mr-2"
+                  className="w-6 h-6 text-gray-300 mr-2"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -75,7 +75,7 @@ const Plans = () => {
                     d="M5 13l4 4L19 7"
                   ></path>
                 </svg>
-                <span className="text-gray-700">{feature}</span>
+                <span className="text-gray-400">{feature}</span>
               </li>
             ))}
           </ul>
@@ -89,7 +89,7 @@ const Plans = () => {
           </div>
         </div>
       </div>
-      <div className="max-w-full rounded overflow-hidden shadow-lg m-4 border-purple-500 border">
+      <div className="max-w-full rounded overflow-hidden shadow-lg m-4 hover:shadow-2xl">
         <div className="bg-gray-200 p-4 flex justify-between items-center">
           <h2 className="text-xl font-bold text-gray-800">
             {cardDataDuo.title}
@@ -99,12 +99,12 @@ const Plans = () => {
           </p>
         </div>
         <div className="p-6">
-          <p className="text-gray-600 mb-4">{cardDataDuo.description}</p>
+          <p className="text-gray-300 mb-4">{cardDataDuo.description}</p>
           <ul className="mb-4">
             {cardDataDuo.features.map((feature, index) => (
               <li key={index.id} className="flex items-center mb-2">
                 <svg
-                  className="w-6 h-6 text-gray-600 mr-2"
+                  className="w-6 h-6 text-gray-300 mr-2"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -117,7 +117,7 @@ const Plans = () => {
                     d="M5 13l4 4L19 7"
                   ></path>
                 </svg>
-                <span className="text-gray-700">{feature}</span>
+                <span className="text-gray-400">{feature}</span>
               </li>
             ))}
           </ul>
@@ -131,7 +131,7 @@ const Plans = () => {
           </div>
         </div>
       </div>
-      <div className="max-w-full rounded overflow-hidden shadow-lg m-4 border-purple-500 border">
+      <div className="max-w-full rounded overflow-hidden shadow-lg m-4 hover:shadow-2xl">
         <div className="bg-gray-200 p-4 flex justify-between items-center">
           <h2 className="text-xl font-bold text-gray-800">
             {cardDataFamily.title}
@@ -141,12 +141,12 @@ const Plans = () => {
           </p>
         </div>
         <div className="p-6">
-          <p className="text-gray-600 mb-4">{cardDataFamily.description}</p>
+          <p className="text-gray-300 mb-4">{cardDataFamily.description}</p>
           <ul className="mb-4">
             {cardDataFamily.features.map((feature, index) => (
               <li key={index.id} className="flex items-center mb-2">
                 <svg
-                  className="w-6 h-6 text-gray-600 mr-2"
+                  className="w-6 h-6 text-gray-300 mr-2"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -159,7 +159,7 @@ const Plans = () => {
                     d="M5 13l4 4L19 7"
                   ></path>
                 </svg>
-                <span className="text-gray-700">{feature}</span>
+                <span className="text-gray-400">{feature}</span>
               </li>
             ))}
           </ul>

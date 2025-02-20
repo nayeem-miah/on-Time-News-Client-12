@@ -28,13 +28,18 @@ export default function FAQSection() {
   };
 
   return (
-    <div className="max-w-3xl mx-auto p-6">
-      <h2 className="text-3xl font-semibold text-center mb-6">Frequently Asked Questions</h2>
-      <div className="space-y-4">
+    <div className="my-8 text-white">
+        <div className="md:w-4/12 mx-auto text-center my-8">
+        <h4 className="text-3xl text-purple-500 my-6 text-center uppercase border-b-2 py-4">
+        F  A  Q
+        </h4>
+      </div>
+
+      <div className="space-y-4 ">
         {faqs.map((faq, index) => (
           <div
             key={index}
-            className="border border-gray-300 rounded-lg p-4 cursor-pointer"
+            className=" rounded-lg p-4 cursor-pointer shadow-lg"
             onClick={() => toggleFAQ(index)}
           >
             <div className="flex justify-between items-center">
@@ -42,7 +47,7 @@ export default function FAQSection() {
               {openIndex === index ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
             </div>
             {openIndex === index && (
-              <p className="mt-2 text-gray-700">{faq.answer}</p>
+              <p className="mt-2 text-gray-300">{faq.answer}</p>
             )}
           </div>
         ))}
