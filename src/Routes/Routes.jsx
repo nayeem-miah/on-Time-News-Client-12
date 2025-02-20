@@ -53,7 +53,7 @@ const router = createBrowserRouter([
           </PrivetRouts>
         ),
         loader: ({ params }) =>
-          fetch(`https://b9a12-on-time-news-server.vercel.app/articles/${params.id}`),
+          fetch(`http://localhost:5000/articles/${params.id}`),
       },
       {
         path: '/subscription/:price',
@@ -104,7 +104,7 @@ const router = createBrowserRouter([
           </PrivetRouts>
         ),
         loader: ({ params }) =>
-          fetch(`https://b9a12-on-time-news-server.vercel.app/article/${params.id}`),
+          fetch(`http://localhost:5000/article/${params.id}`),
       },
       {
         path: "/premiumArticles",
