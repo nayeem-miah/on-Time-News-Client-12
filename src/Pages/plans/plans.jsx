@@ -82,7 +82,7 @@ const Plans = () => {
           <div className="text-center">
             <button
               onClick={hanldePrice}
-              className="text-xl font-bold btn bg-white rounded-lg text-pink-600"
+              className="w-full py-2 bg-gradient-to-r from-green-400 to-blue-500 text-white font-semibold rounded-lg shadow-md hover:from-green-500 hover:to-blue-600 transition-all duration-300"
             >
               free now 1 month
             </button>
@@ -124,7 +124,7 @@ const Plans = () => {
           <div className="text-center">
             <button
               onClick={hanldePrice2}
-              className="text-xl font-bold btn bg-white rounded-lg text-pink-600"
+              className="w-full py-2 bg-gradient-to-r from-green-400 to-blue-500 text-white font-semibold rounded-lg shadow-md hover:from-green-500 hover:to-blue-600 transition-all duration-300"
             >
               get premium due
             </button>
@@ -166,7 +166,7 @@ const Plans = () => {
           <div className="text-center">
             <button
               onClick={hanldePrice3}
-              className="text-xl font-bold btn bg-white rounded-lg text-pink-600"
+              className="w-full py-2 bg-gradient-to-r from-green-400 to-blue-500 text-white font-semibold rounded-lg shadow-md hover:from-green-500 hover:to-blue-600 transition-all duration-300"
             >
               get premium Family
             </button>
