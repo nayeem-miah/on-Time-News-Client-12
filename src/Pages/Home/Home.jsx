@@ -40,7 +40,7 @@ const Home = () => {
               Plans
             </h4>
           </div>
-       
+          <Plans></Plans>
           <FAQSection/>
           <div className="my-10">
             <Newsletter></Newsletter>
