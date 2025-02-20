@@ -60,7 +60,7 @@ const Header = () => {
                     <p className="text-blue-500 link">#{article.tags}</p>
                   </p>
                   <Link to={!user ? "/login" : "/allArticles"}>
-                    <button className="btn btn-outline btn-success border-0 border-b-2 border-t-2 mt-4">
+                    <button className="px-4 py-2 bg-gradient-to-r from-green-400 to-blue-500 text-white font-semibold rounded-lg shadow-md hover:from-green-500 hover:to-blue-600 transition-all duration-3004">
                       Explore Now
                     </button>
                   </Link>
