@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const axiosPublic = axios.create({
-  // baseURL: "http://localhost:5000",
-  baseURL: "http://localhost:5000",
+  // baseURL: "https://on-time-news-server-12.vercel.app",
+  baseURL: "https://on-time-news-server-12.vercel.app",
 });
 const useAxiosPublic = () => {
   return axiosPublic;

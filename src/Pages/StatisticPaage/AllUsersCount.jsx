@@ -36,10 +36,8 @@ const AllUsersCount = () => {
         Total Users
       </h2>
       <div className="text-7xl font-extrabold text-center text-green-500" ref={countUpRef} />
-      {/* <h3 className="text-xl text-purple-400 font-semibold text-center mt-6">
-        All Users: ({users.length})
-      </h3> */}
-    </div>
+     
+     </div>
   );
 };
 

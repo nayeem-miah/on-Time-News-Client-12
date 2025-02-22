@@ -1,4 +1,3 @@
-// Saiful Islam Molla
 import { useQuery } from "@tanstack/react-query";
 import UserArticleCard from "./UserArticleCard";
 import Select from 'react-select';
