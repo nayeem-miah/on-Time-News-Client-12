@@ -35,7 +35,7 @@ export default function FAQSection() {
     <div className="my-8 text-white">
       <div className="md:w-4/12 mx-auto text-center my-8">
         <h4 className="text-3xl text-purple-500 my-6 text-center uppercase border-b-2 py-4">
-          Frequently Asked Questions
+          F A Q
         </h4>
       </div>
 

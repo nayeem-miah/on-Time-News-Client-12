@@ -5,7 +5,7 @@ import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
 import { FaEdit } from "react-icons/fa";
 import useAdmin from "../../Hooks/useAdmin";
-import News from "../../assets/TrandingNews/nes.jpg";
+import News from "../../assets/logo.jpg";
 
 const Navbar = () => {
   const { logout, user } = useAuth();
