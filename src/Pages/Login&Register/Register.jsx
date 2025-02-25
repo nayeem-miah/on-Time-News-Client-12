@@ -9,16 +9,14 @@ import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import GoogleLogin from "../../Compoents/GoogleLogin/GoogleLogin";
 import Loader from "../../Compoents/EmptyState/loader";
 const Register = () => {
-  const { createUser, updateUserProfile } = useAuth();
-  const [showPassword, setShowPassword] = useState(false);
-
-  const [error, setError] = useState("");
-
-  const [success, setSuccess] = useState("");
   const navigate = useNavigate();
   const axiosPublic = useAxiosPublic();
-
+  const { createUser, updateUserProfile } = useAuth();
+  const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
   const [loading, setLoading] = useState(true);
+  
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
@@ -193,7 +191,7 @@ const Register = () => {
                 <div className="mt-6">
                   <button
                     type="submit"
-                    className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-gray-800 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50"
+                    className="w-full py-2 bg-gradient-to-r from-green-400 to-blue-500 text-white font-semibold rounded-lg shadow-md hover:from-green-500 hover:to-blue-600 transition-all duration-300"
                   >
                     Sign Up
                   </button>

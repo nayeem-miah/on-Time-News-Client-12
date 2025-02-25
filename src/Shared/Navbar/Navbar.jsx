@@ -131,9 +131,8 @@ const Navbar = () => {
       </div>
       <div className="navbar-end">
         <div className="relative md:border-l flex items-center justify-end w-full md:w-auto pl-3">
-          <div className=" w-[50px]"></div>
           {!user && (
-            <button className="font-bold hover:border-b-green-700 p-1 hidden lg:block text-white bg-purple-500 hover:bg-purple-700 rounded mr-5">
+            <button className="px-4 py-2 bg-gradient-to-r from-green-400 to-blue-500 text-white font-semibold rounded-lg shadow-md hover:from-green-500 hover:to-blue-600 transition-all duration-300 mr-4 ">
               <NavLink to="/register">Register</NavLink>
             </button>
           )}
@@ -151,7 +150,7 @@ const Navbar = () => {
           ) : (
             <Link
               to={"/login"}
-              className="bg-purple-500 hover:bg-purple-700 duration-200 text-white font-bold px-4 xl:px-6 py-1 rounded"
+              className=" py-2 bg-gradient-to-r from-green-400 to-blue-500 px-4 text-white font-semibold rounded-lg shadow-md hover:from-green-500 hover:to-blue-600 transition-all duration-300"
             >
               Login
             </Link>

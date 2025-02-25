@@ -1,4 +1,6 @@
+import EmptyState from "../../Compoents/EmptyState/EmptyState";
 import Loader from "../../Compoents/EmptyState/loader";
+import useAuth from "../../Hooks/useAuth";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import UserFilter from "../Dashboard/AllUsers/UserFilter";
 import ArticlesCard from "./ArticlesCard/ArticlesCard";
@@ -8,7 +10,8 @@ const AllArticles = () => {
   const [AllArticles, setAllArticles] = useState();
   const [search = [], setSearch] = useState("");
   const [loading, setLoading] = useState(true);
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(false);
+  const {user} = useAuth();
 
   useEffect(() => {
     setTimeout(() => {
@@ -53,9 +56,13 @@ const AllArticles = () => {
             isLoading && "loading ......."
           }
         {
-          AllArticles.length === 0 && <div className="text-3xl text-red-400 my-10 text-center">
-            no data fund .............
-          </div> 
+          AllArticles.length === 0 &&  <EmptyState
+          message={"No Articles  Available!"}
+          address={"/"}
+          label={"Go to Home"}
+          address2={user ? "/addArticles" : "/login"}
+          label2={"Add Articles"}
+        ></EmptyState>
         }
           <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 my-10">
             {AllArticles?.map(
