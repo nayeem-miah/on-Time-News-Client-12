@@ -10,7 +10,7 @@ const ArticlesDetails = () => {
         <img
           className="w-full h-80 object-cover rounded-xl shadow-lg hover:scale-105 transition-all duration-500"
           src={data.image}
-          alt="Article"
+          alt="not found articles images"
         />
 
         {/* Author Section */}
@@ -44,7 +44,7 @@ const ArticlesDetails = () => {
           {data.tags.split(",").map((tag, index) => (
             <span
               key={index}
-              className="bg-gradient-to-r from-blue-500 to-purple-500 text-sm font-semibold text-white px-5 py-2 rounded-full shadow-md hover:scale-105 transition-all"
+              className=" bg-gradient-to-r from-green-400 to-blue-500 text-white font-semibold  hover:from-green-500 hover:to-blue-600 transition-all duration-300   text-sm  px-5 py-2 rounded-full shadow-md hover:scale-105 "
             >
               #{tag.trim()}
             </span>

@@ -1,13 +1,12 @@
 import axios from "axios";
-import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import toast from "react-hot-toast";
 import useAuth from "../../Hooks/useAuth";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
-import Loader from "../../Compoents/EmptyState/loader";
+import {  useState } from "react";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 const AddArticles = () => {
-  const axiosSecure = useAxiosSecure();
+  const axiosPublic = useAxiosPublic();
   const { user } = useAuth();
   const navigate = useNavigate();
   const email = user?.email;
@@ -18,13 +17,10 @@ const AddArticles = () => {
   const viewCount = 0;
   const decline = {};
 
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 1000);
-  }, []);
-  // const dateString = new Date();
+  const [loading, setLoading] = useState(false);
+
+
+  const dateString = new Date();
   const date = new Date().getTime().toLocaleString();
   const handleSubmit = async e => {
     e.preventDefault();
@@ -43,6 +39,8 @@ const AddArticles = () => {
         }`,
         formData
       );
+
+    
       // post data database
       if (data.success) {
         const newData = {
@@ -50,7 +48,7 @@ const AddArticles = () => {
           publisher,
           tags,
           description,
-          image: data.data.display_url,
+          // image: data.data.display_url,
           email,
           photo,
           displayName,
@@ -60,24 +58,23 @@ const AddArticles = () => {
           viewCount,
           decline,
         };
-        const res = await axiosSecure.post("/articles", newData);
+        setLoading(true)
+        const res = await axiosPublic.post("/articles", newData);
         if (res.data.insertedId) {
           toast.success(`${title} data Added successfully`);
           form.reset();
           navigate("/myArticles");
         }
-        // console.log(res.data);
+        setLoading(false)
       }
     } catch (err) {
+      toast.error(err)
       console.log(err);
     }
   };
 
   return (
     <div>
-      {loading ? (
-        <Loader></Loader>
-      ) : (
         <section className="max-w-full py-10 p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
           <h2 className="text-center my-10 text-3xl font-semibold text-gray-700 capitalize dark:text-white">
             Add Articles
@@ -205,13 +202,15 @@ const AddArticles = () => {
               />
             </div>
             <div className="mt-6 w-full">
-              <button className="px-8 py-3 leading-5 text-white  w-full transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">
-                Submit
+              <button className={`${loading && "px-8 py-3 leading-5 text-white  w-full transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600"}  w-full py-2 bg-gradient-to-r from-green-400 to-blue-500 text-white font-semibold rounded-lg shadow-md hover:from-green-500 hover:to-blue-600 transition-all duration-300` }>
+           {
+            loading ? "loading ....." : "Submit"
+           }
               </button>
             </div>
           </form>
         </section>
-      )}
+  
     </div>
   );
 };

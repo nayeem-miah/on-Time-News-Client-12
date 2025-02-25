@@ -50,15 +50,15 @@ const Navbar = () => {
       <li>
         <NavLink to="/">Home</NavLink>
       </li>
+      <li>
+        <NavLink to="/allArticles">All Articles </NavLink>
+      </li>
       {user && (
         <li>
           <NavLink to="/addArticles">Add Articles</NavLink>
         </li>
       )}
-      <li>
-        <NavLink to="/allArticles">All Articles </NavLink>
-      </li>
-
+   
       {user && (
         <li>
           <NavLink to="/subscription/:price">Subscription</NavLink>
@@ -159,7 +159,7 @@ const Navbar = () => {
 
           {open && (
             <div
-              ref={modalRef} // Use ref to track this modal
+              ref={modalRef}
               className="absolute text-center flex flex-col justify-center items-center gap-4 shadow-lg bg-white dark:bg-[#120505] px-8 py-4 top-16 dark:text-white z-50"
             >
               <img

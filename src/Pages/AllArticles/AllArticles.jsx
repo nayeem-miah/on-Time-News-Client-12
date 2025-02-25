@@ -1,13 +1,14 @@
 import Loader from "../../Compoents/EmptyState/loader";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import UserFilter from "../Dashboard/AllUsers/UserFilter";
 import ArticlesCard from "./ArticlesCard/ArticlesCard";
 import { useEffect, useState } from "react";
-import { RiseLoader } from "react-spinners";
 const AllArticles = () => {
   const axiosPublic = useAxiosPublic();
   const [AllArticles, setAllArticles] = useState();
   const [search = [], setSearch] = useState("");
   const [loading, setLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
     setTimeout(() => {
@@ -16,8 +17,11 @@ const AllArticles = () => {
   }, []);
 
   useEffect(() => {
+    setIsLoading(true)
     axiosPublic(`/searchArticles?search=${search}`).then(res =>
-      setAllArticles(res.data)
+    setAllArticles(res.data),
+    setIsLoading(false)
+
     );
   }, [search]);
   const handleSearch = e => {
@@ -25,7 +29,7 @@ const AllArticles = () => {
     const field = e.target.search.value;
     setSearch(field);
   };
-
+// console.log(AllArticles)
   return (
     <div>
       {loading ? (
@@ -44,6 +48,15 @@ const AllArticles = () => {
           </form>
           {/* <UserFilter></UserFilter> */}
 
+          {/* set loading */}
+          {
+            isLoading && "loading ......."
+          }
+        {
+          AllArticles.length === 0 && <div className="text-3xl text-red-400 my-10 text-center">
+            no data fund .............
+          </div> 
+        }
           <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 my-10">
             {AllArticles?.map(
               articles =>

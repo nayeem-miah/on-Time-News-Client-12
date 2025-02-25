@@ -25,7 +25,7 @@ const ArticlesCard = ({ articles }) => {
   return (
     <div className="my-5 p-5 flex flex-col items-center bg-gray-800 text-white hover:bg-gray-700 rounded-lg shadow-lg hover:shadow-2xl transition-all duration-300" data-aos="fade-up" data-aos-duration="2000">
       <div className="relative w-full max-w-md">
-        <img className="w-full h-60 object-cover rounded-lg transition-transform transform hover:scale-105" src={articles.image} alt="article" />
+        <img className="w-full h-60 object-cover rounded-lg transition-transform transform hover:scale-105" src={articles.image} alt="article image" />
         {articles.isPremium === "Premium" && (
           <span className="absolute top-3 right-3 bg-purple-600 text-white text-xs px-3 py-1 rounded-full shadow-md">Premium</span>
         )}

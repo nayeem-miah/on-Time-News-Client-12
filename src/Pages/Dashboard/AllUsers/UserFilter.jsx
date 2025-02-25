@@ -9,7 +9,6 @@ const UserFilter = () => {
   ]);
 
   const [minAge, setMinAge] = useState(30);
-
   const handleAgeChange = e => {
     setMinAge(e.target.value);
   };
