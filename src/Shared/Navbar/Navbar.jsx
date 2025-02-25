@@ -156,46 +156,36 @@ const Navbar = () => {
             </Link>
           )}
 
-          {open && (
-            <div
-              ref={modalRef}
-              className="absolute text-center flex flex-col justify-center items-center gap-4 shadow-lg bg-white dark:bg-[#120505] px-8 py-4 top-16 dark:text-white z-50"
-            >
-              <img
-                src={user?.photoURL}
-                className="w-32 h-32 mx-auto rounded-full dark:bg-gray-500 aspect-square"
-              />
-              <div className="flex justify-between items-center">
-                <p className="text-lg font-semibold mr-4">{user?.displayName}</p>
-                <p>
-                  <Link to={"/updateUserProfile"}>
-                    <FaEdit className="text-xl"></FaEdit>
-                  </Link>
-                </p>
-              </div>
+{open && ( 
+  <div
+    ref={modalRef}
+    className="absolute text-center flex flex-col justify-center items-center gap-4 shadow-lg bg-white dark:bg-[#1a1a1a] px-8 py-6 top-16 dark:text-white z-50 rounded-lg border border-gray-300 dark:border-gray-700"
+  >
+    <img
+      src={user?.photoURL}
+      className="w-24 h-24 mx-auto rounded-full dark:bg-gray-500 border-4 border-purple-500"
+    />
+    <div className="flex flex-col items-center">
+      <p className="text-lg font-semibold">{user?.displayName}</p>
+      <Link to={"/updateUserProfile"} className="mt-1 text-purple-500 hover:text-purple-700">
+        <FaEdit className="text-xl" />
+      </Link>
+    </div>
+    <p className="text-md font-medium text-gray-700 dark:text-gray-300">{user?.email}</p>
+    <div className="flex gap-4 mt-3">
+      <span className="px-4 py-1 text-xs font-bold text-white bg-purple-600 rounded-md">
+        {isAdmin ? "Admin" : "Normal User"}
+      </span>
+      <button
+        onClick={handleLogout}
+        className="bg-purple-600 hover:bg-purple-800 transition duration-200 text-white font-bold px-4 py-1 rounded-md cursor-pointer"
+      >
+        Logout
+      </button>
+    </div>
+  </div>
+)}
 
-              <p className="text-lg font-semibold">{user?.email}</p>
-              <div className="flex justify-between gap-6">
-                <button>
-                  {isAdmin ? (
-                    <p className="p-2 px-4 text-xs font-bold text-white bg-purple-500 rounded">
-                      Admin
-                    </p>
-                  ) : (
-                    <p className="p-2 px-4 text-xs font-bold text-white bg-purple-500 rounded">
-                      normal user
-                    </p>
-                  )}
-                </button>
-                <button
-                  onClick={handleLogout}
-                  className="bg-purple-500 hover:bg-purple-900 duration-200 text-white font-bold px-4 xl:px-6 py-1 rounded cursor-pointer"
-                >
-                  logout
-                </button>
-              </div>
-            </div>
-          )}
         </div>
       </div>
     </div>
