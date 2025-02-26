@@ -56,7 +56,7 @@ const AllArticles = () => {
             isLoading && "loading ......."
           }
         {
-          AllArticles.length === 0 &&  <EmptyState
+          AllArticles?.length === 0 &&  <EmptyState
           message={"No Articles  Available!"}
           address={"/"}
           label={"Go to Home"}

@@ -7,8 +7,10 @@ const PaymentPage = () => {
   const { totalPrice } = useParams();
   // console.log(totalPrice);
   return (
-    <div className=" pt-20 min-h-[calc(100vh-180px)]">
-      {/* <h3>payment page </h3> */}
+    <div className="pt-20 min-h-[calc(100vh-180px)] bg-[url('https://img.freepik.com/premium-photo/bank-card-payment-black-hand-holding-3d-render_1106493-106452.jpg?w=1060')] bg-cover bg-center  items-center justify-center">
+    <h1 className="lg:text-4xl text-3xl font-bold text-white text-center py-4">
+      Secure Payment
+    </h1>
       <Elements stripe={stripePromise}>
         <CheckoutForm totalPrice={totalPrice}></CheckoutForm>
       </Elements>

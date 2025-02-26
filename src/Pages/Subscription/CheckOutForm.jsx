@@ -6,13 +6,14 @@ import { useEffect, useState } from "react";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import useAuth from "../../Hooks/useAuth";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const CheckoutForm = ({ totalPrice }) => {
   const stripe = useStripe();
   const elements = useElements();
   const axiosPublic = useAxiosPublic();
   const { user } = useAuth();
-
+  const navigate = useNavigate()
   const [clientSecret, setClientSecret] = useState("");
   const [cardError, setCardError] = useState("");
   const [processing, setProcessing] = useState(false);
@@ -57,12 +58,12 @@ const CheckoutForm = ({ totalPrice }) => {
     });
 
     if (error) {
-      console.log("[error]", error);
+      console.error("[error]", error);
       setCardError(error.message);
       setProcessing(false);
       return;
     } else {
-      console.log("[PaymentMethod]", paymentMethod);
+      console.error("[PaymentMethod]", paymentMethod);
       setCardError("");
     }
     //  confirm payment
@@ -77,28 +78,33 @@ const CheckoutForm = ({ totalPrice }) => {
         },
       });
     if (confirmError) {
-      console.log(confirmError);
+      console.error(confirmError);
       setCardError(confirmError.message);
       setProcessing(false);
       return;
     }
     if (paymentIntent.status === "succeeded") {
-      console.log("payment Intent ", paymentIntent);
+      // console.log("payment Intent ", paymentIntent);
       const paymentInfo = {
-        name: user?.name,
+        name: user?.displayName,
         email: user?.email,
         transactionId: paymentIntent.id,
-        date: new Date(),
+        date: new Date().toLocaleDateString(),
+        totalPrice : totalPrice
       };
-      console.log(paymentInfo);
-      toast.success(`${user?.email} payment successfully `)
+      // console.log("paymentInfo", paymentInfo);
 
-      // try {
-      //   axiosPublic.post("/payment", paymentInfo);
+      try {
+      const res=await axiosPublic.post("/payment", paymentInfo);
+     if(res.data.insertedId){
+       toast.success(`${totalPrice}$ payment successfully`)
+       navigate('/')
+     }
+
       
-      // } catch (error) {
-      //   console.log(error);
-      // }
+      } catch (error) {
+        console.log(error);
+      }
       setProcessing(false);
     }
   };
@@ -123,14 +129,14 @@ const CheckoutForm = ({ totalPrice }) => {
           }}
         />
         <button
-          className="btn bg-blue-600 px-10"
+          className=" px-4 mx-auto text-center py-2 bg-gradient-to-r from-green-400 to-blue-500 text-white font-semibold rounded-lg shadow-md hover:from-green-500 hover:to-blue-600 transition-all duration-300"
           type="submit"
           disabled={!stripe || !clientSecret || processing}
         >
           {processing ? (
             <ImSpinner9
               size={24}
-              className="animate-spin m-auto text-green-400"
+              className="animate-spin m-auto  text-green-400"
             ></ImSpinner9>
           ) : (
             `Pay $(${totalPrice})`

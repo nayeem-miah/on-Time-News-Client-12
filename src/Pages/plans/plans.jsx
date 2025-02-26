@@ -59,7 +59,7 @@ const Plans = () => {
         <div className="p-6">
           <p className="text-gray-300 mb-4">{cardData.description}</p>
           <ul className="mb-4">
-            {cardData.features.map((feature, index) => (
+            {cardData?.features?.map((feature, index) => (
               <li key={index.id} className="flex items-center mb-2">
                 <svg
                   className="w-6 h-6 text-gray-300 mr-2"
@@ -99,9 +99,9 @@ const Plans = () => {
           </p>
         </div>
         <div className="p-6">
-          <p className="text-gray-300 mb-4">{cardDataDuo.description}</p>
+          <p className="text-gray-300 mb-4">{cardDataDuo?.description}</p>
           <ul className="mb-4">
-            {cardDataDuo.features.map((feature, index) => (
+            {cardDataDuo?.features?.map((feature, index) => (
               <li key={index.id} className="flex items-center mb-2">
                 <svg
                   className="w-6 h-6 text-gray-300 mr-2"
