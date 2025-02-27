@@ -1,8 +1,8 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import EmptyState from "../../Compoents/EmptyState/EmptyState";
 import Loader from "../../Compoents/EmptyState/loader";
 import useAuth from "../../Hooks/useAuth";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
-import UserFilter from "../Dashboard/AllUsers/UserFilter";
 import ArticlesCard from "./ArticlesCard/ArticlesCard";
 import { useEffect, useState } from "react";
 const AllArticles = () => {
@@ -11,7 +11,7 @@ const AllArticles = () => {
   const [search = [], setSearch] = useState("");
   const [loading, setLoading] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
-  const {user} = useAuth();
+  const { user } = useAuth();
 
   useEffect(() => {
     setTimeout(() => {
@@ -22,8 +22,8 @@ const AllArticles = () => {
   useEffect(() => {
     setIsLoading(true)
     axiosPublic(`/searchArticles?search=${search}`).then(res =>
-    setAllArticles(res.data),
-    setIsLoading(false)
+      setAllArticles(res.data),
+      setIsLoading(false)
 
     );
   }, [search]);
@@ -32,7 +32,7 @@ const AllArticles = () => {
     const field = e.target.search.value;
     setSearch(field);
   };
-// console.log(AllArticles)
+  // console.log(AllArticles)
   return (
     <div>
       {loading ? (
@@ -55,15 +55,15 @@ const AllArticles = () => {
           {
             isLoading && "loading ......."
           }
-        {
-          AllArticles?.length === 0 &&  <EmptyState
-          message={"No Articles  Available!"}
-          address={"/"}
-          label={"Go to Home"}
-          address2={user ? "/addArticles" : "/login"}
-          label2={"Add Articles"}
-        ></EmptyState>
-        }
+          {
+            AllArticles?.length === 0 && <EmptyState
+              message={"No Articles  Available!"}
+              address={"/"}
+              label={"Go to Home"}
+              address2={user ? "/addArticles" : "/login"}
+              label2={"Add Articles"}
+            ></EmptyState>
+          }
           <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 my-10">
             {AllArticles?.map(
               articles =>

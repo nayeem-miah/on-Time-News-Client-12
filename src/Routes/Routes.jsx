@@ -21,6 +21,7 @@ import UpdateArticles from "../Pages/MyArticlesPage/UpdateArticles/UpdateArticle
 import AllArticlesAdmin from "../Pages/Dashboard/AllArticles/AllArticlesAdmin";
 import Modal from "../Pages/Dashboard/AllArticles/modal";
 import PaymentPage from "../Pages/Subscription/PaymentPage";
+import PaymentHistory from "../Pages/Dashboard/AdminHome/paymentHistory/PaymentHistory";
 
 const router = createBrowserRouter([
   {
@@ -147,6 +148,14 @@ const router = createBrowserRouter([
         element: (
           <AdminRoute>
             <AllArticlesAdmin></AllArticlesAdmin>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "payment-history",
+        element: (
+          <AdminRoute>
+            <PaymentHistory></PaymentHistory>
           </AdminRoute>
         ),
       },

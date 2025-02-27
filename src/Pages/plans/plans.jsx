@@ -2,7 +2,6 @@ import { useNavigate } from "react-router-dom";
 
 const Plans = () => {
   const navigate = useNavigate();
-
   const cardData = {
     title: "Premium Plan",
     description: "Get the most out of our service with the premium plan.",
