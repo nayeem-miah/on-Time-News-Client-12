@@ -5,7 +5,7 @@ import {
   FaRegNewspaper,
   FaUsers,
 } from "react-icons/fa6";
-import { NavLink, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
 import useAdmin from "../Hooks/useAdmin";
 import { useEffect, useState } from "react";
@@ -51,7 +51,9 @@ const Dashboard = () => {
               className={` lg:w-64 w-1/2 bg-purple-500 lg:fixed lg:min-h-full  lg:mt-0 ${isDrawerOpen ? "block" : "hidden"
                 } lg:block`}
             >
-              <h3 className="text-2xl text-black text-center mt-10 font-bold"> OnTimeNews</h3>
+              <div className="hover:text-blue-500 hover:underline  underline-offset-4">  <Link to="/" className="hover:text-blue-500">
+                <h3 className="text-2xl text-black  text-center mt-10 font-bold"> OnTimeNews</h3>
+              </Link></div>
               <ul className="menu text-black font-bold p-4 ">
                 {isAdmin && (
                   <>
