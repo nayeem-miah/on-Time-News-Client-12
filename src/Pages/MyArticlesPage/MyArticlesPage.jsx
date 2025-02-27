@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import EmptyState from "../../Compoents/EmptyState/EmptyState";
 import { useEffect, useState } from "react";
-import { ScaleLoader } from "react-spinners";
 import Loader from "../../Compoents/EmptyState/loader";
 
 const MyArticlesPage = () => {

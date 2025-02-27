@@ -179,17 +179,20 @@ const Navbar = () => {
                 </Link>
               </div>
               <p className="text-md font-medium text-gray-700 dark:text-gray-300">{user?.email}</p>
-              <div className="flex gap-4 mt-3">
-                <span className="px-4 py-1 text-xs font-bold text-white bg-purple-600 rounded-md">
-                  {isAdmin ? "Admin" : "Normal User"}
-                </span>
-                <button
-                  onClick={handleLogout}
-                  className="bg-purple-600 hover:bg-purple-800 transition duration-200 text-white font-bold px-4 py-1 rounded-md cursor-pointer"
-                >
-                  Logout
+              <Link to={"/my-payment-history"}>
+                <button className="bg-gradient-to-r from-green-400 to-blue-500 px-4 py-2 text-white font-semibold rounded shadow-md hover:from-green-500 hover:to-blue-600 transition-all duration-300">
+                  My payment history
                 </button>
-              </div>
+              </Link>
+              {/* <span className="px-4 py-1 text-xs font-bold text-white bg-purple-600 rounded-md">
+                  {isAdmin ? "Admin" : "Normal User"}
+                </span> */}
+              <button
+                onClick={handleLogout}
+                className="px-4 py-2 bg-gradient-to-r bg-red-500 text-white font-semibold rounded shadow-md w-full transition-all duration-300"
+              >
+                Logout
+              </button>
             </div>
           )}
 
