@@ -1,41 +1,57 @@
+/* eslint-disable react-refresh/only-export-components */
 import { useQuery } from "@tanstack/react-query";
 import Chart from "react-google-charts";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 export const options = {
-  title: "the percentage of publication article",
+  // title: "Publication Article Distribution",
   is3D: true,
+  pieHole: 0.4, // Makes it a donut chart
+  slices: {
+    0: { offset: 0.1, color: "#4285F4" },
+    1: { offset: 0.05, color: "#EA4335" },
+    2: { offset: 0.05, color: "#FBBC05" },
+    3: { offset: 0.05, color: "#34A853" },
+  },
+  legend: { position: "bottom", textStyle: { color: "#555", fontSize: 14 } },
+  backgroundColor: "#f9f9f9",
+  chartArea: { width: "85%", height: "75%" },
+  animation: {
+    startup: true,
+    duration: 1000,
+    easing: "out",
+  },
 };
 
-const Chaarts = () => {
-  const axiosSeour = useAxiosSecure();
-  const { data: AllPublisher = [] } = useQuery({
+const Charts = () => {
+  const axiosSecure = useAxiosSecure();
+  const { data: allPublishers = [] } = useQuery({
     queryKey: ["articles"],
     queryFn: async () => {
-      const res = await axiosSeour.get("/articles");
+      const res = await axiosSecure.get("/articles");
       return res.data;
     },
   });
-  // console.log(AllPublisher);
-  const da = AllPublisher.reduce((acc, current) => {
-    if (acc[current.publisher]) {
-      acc[current.publisher] = acc[current.publisher] + 1;
-    } else {
-      acc[current.publisher] = 1;
-    }
+
+  const publisherData = allPublishers.reduce((acc, current) => {
+    acc[current.publisher] = (acc[current.publisher] || 0) + 1;
     return acc;
   }, {});
-  // console.log(da);
-  const data = [["Task", "Hours per Day"], ...Object.entries(da)];
+
+  const data = [["Publisher", "Number of Articles"], ...Object.entries(publisherData)];
+
   return (
-    <Chart
-      chartType="PieChart"
-      data={data}
-      options={options}
-      width={"100%"}
-      height={"400px"}
-    />
+    <div className="bg-white p-4 shadow-lg rounded-lg">
+      <h2 className="text-xl font-semibold text-center mb-4 text-purple-500">Publication Article Distribution</h2>
+      <Chart
+        chartType="PieChart"
+        data={data}
+        options={options}
+        width={"100%"}
+        height={"400px"}
+      />
+    </div>
   );
 };
 
-export default Chaarts;
+export default Charts;
