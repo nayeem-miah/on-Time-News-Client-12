@@ -58,12 +58,12 @@ const Navbar = () => {
           <NavLink to="/addArticles">Add Articles</NavLink>
         </li>
       )}
-   
-      {user && (
+
+      {/* {user && (
         <li>
           <NavLink to="/subscription/:price">Subscription</NavLink>
         </li>
-      )}
+      )} */}
       {/*  (this will be conditional show only if user is admin) */}
       <span>
         {isAdmin && (
@@ -72,6 +72,13 @@ const Navbar = () => {
           </li>
         )}
       </span>
+      {/* <span>
+        {!isAdmin && (
+          <li>
+            <NavLink to="/dashboard/user-home">Dashboard</NavLink>
+          </li>
+        )}
+      </span> */}
       {/* this will be conditional show only If user taken Subscription */}
       {user && (
         <li>
@@ -132,14 +139,14 @@ const Navbar = () => {
       <div className="navbar-end">
         <div className="relative md:border-l flex items-center justify-end w-full md:w-auto pl-3">
           {!user && (
-            <button className="px-4 py-2 bg-gradient-to-r from-green-400 to-blue-500 text-white font-semibold rounded-lg shadow-md hover:from-green-500 hover:to-blue-600 transition-all duration-300 mr-4 ">
+            <button className="px-4 py-2 bg-gradient-to-r from-green-400 to-blue-500 text-white font-semibold rounded shadow-md hover:from-green-500 hover:to-blue-600 transition-all duration-300 mr-4 ">
               <NavLink to="/register">Register</NavLink>
             </button>
           )}
           {user ? (
             <button
               onClick={() => setOpen(!open)}
-              className="border-2 border-[#f0084a] rounded-full w-[40px]"
+              className="border-2 border-purple-500 rounded-full w-[40px]"
             >
               <img
                 src={user?.photoURL}
@@ -150,41 +157,41 @@ const Navbar = () => {
           ) : (
             <Link
               to={"/login"}
-              className=" py-2 bg-gradient-to-r from-green-400 to-blue-500 px-4 text-white font-semibold rounded-lg shadow-md hover:from-green-500 hover:to-blue-600 transition-all duration-300"
+              className=" py-2 bg-gradient-to-r from-green-400 to-blue-500 px-4 text-white font-semibold rounded shadow-md hover:from-green-500 hover:to-blue-600 transition-all duration-300"
             >
               Login
             </Link>
           )}
 
-{open && ( 
-  <div
-    ref={modalRef}
-    className="absolute text-center flex flex-col justify-center items-center gap-4 shadow-lg bg-white dark:bg-[#1a1a1a] px-8 py-6 top-16 dark:text-white z-50 rounded-lg border border-gray-300 dark:border-gray-700"
-  >
-    <img
-      src={user?.photoURL}
-      className="w-24 h-24 mx-auto rounded-full dark:bg-gray-500 border-4 border-purple-500"
-    />
-    <div className="flex flex-col items-center">
-      <p className="text-lg font-semibold">{user?.displayName}</p>
-      <Link to={"/updateUserProfile"} className="mt-1 text-purple-500 hover:text-purple-700">
-        <FaEdit className="text-xl" />
-      </Link>
-    </div>
-    <p className="text-md font-medium text-gray-700 dark:text-gray-300">{user?.email}</p>
-    <div className="flex gap-4 mt-3">
-      <span className="px-4 py-1 text-xs font-bold text-white bg-purple-600 rounded-md">
-        {isAdmin ? "Admin" : "Normal User"}
-      </span>
-      <button
-        onClick={handleLogout}
-        className="bg-purple-600 hover:bg-purple-800 transition duration-200 text-white font-bold px-4 py-1 rounded-md cursor-pointer"
-      >
-        Logout
-      </button>
-    </div>
-  </div>
-)}
+          {open && (
+            <div
+              ref={modalRef}
+              className="absolute text-center flex flex-col justify-center items-center gap-4 shadow-lg bg-white dark:bg-[#1a1a1a] px-8 py-6 top-16 dark:text-white z-50 rounded-lg border border-gray-300 dark:border-gray-700"
+            >
+              <img
+                src={user?.photoURL}
+                className="w-24 h-24 mx-auto rounded-full dark:bg-gray-500 border-4 border-purple-500"
+              />
+              <div className="flex flex-col items-center">
+                <p className="text-lg font-semibold">{user?.displayName}</p>
+                <Link to={"/updateUserProfile"} className="mt-1 text-purple-500 hover:text-purple-700">
+                  <FaEdit className="text-xl" />
+                </Link>
+              </div>
+              <p className="text-md font-medium text-gray-700 dark:text-gray-300">{user?.email}</p>
+              <div className="flex gap-4 mt-3">
+                <span className="px-4 py-1 text-xs font-bold text-white bg-purple-600 rounded-md">
+                  {isAdmin ? "Admin" : "Normal User"}
+                </span>
+                <button
+                  onClick={handleLogout}
+                  className="bg-purple-600 hover:bg-purple-800 transition duration-200 text-white font-bold px-4 py-1 rounded-md cursor-pointer"
+                >
+                  Logout
+                </button>
+              </div>
+            </div>
+          )}
 
         </div>
       </div>

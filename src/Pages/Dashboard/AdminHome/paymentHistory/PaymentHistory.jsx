@@ -16,7 +16,7 @@ const PaymentHistory = () => {
     if (isLoading) return <Loader />
     return (
         <div>
-            <h3 className="text-center text-3xl my-4">
+            <h3 className="text-center text-3xl my-4 text-purple-500">
                 payment history : ({PaymentHistory?.length})
             </h3>
 

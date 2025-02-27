@@ -37,10 +37,10 @@ const AllUsers = () => {
       ) : (
         <div className="">
           <div className="flex justify-evenly my-4 mt-1 ">
-            <h2 className="text-3xl">All Users</h2>
-            <h2 className="text-3xl">
-              Total Users : (
-              <span className="text-green-600">{users.length}</span>)
+            <h2 className="text-3xl text-purple-500">All Users</h2>
+            <h2 className="text-3xl text-purple-500">
+              Total Users :
+              <span className=""> {users.length}</span>
             </h2>
           </div>
           <div className="overflow-x-auto">

@@ -87,8 +87,8 @@ const AllArticlesAdmin = () => {
       ) : (
         <div className="my-5">
           <div className="flex justify-evenly my-4 mt-1 ">
-            <h2 className="text-3xl">All Articles</h2>
-            <h2 className="text-3xl">Total Articles : {AllArticles.length}</h2>
+            <h2 className="text-3xl text-purple-600">All Articles</h2>
+            <h2 className="text-3xl text-purple-600">Total Articles : {AllArticles.length}</h2>
           </div>
           <div className="overflow-x-auto">
             <table className="table w-full">

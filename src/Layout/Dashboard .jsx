@@ -89,6 +89,42 @@ const Dashboard = () => {
                     </li>
                   </>
                 )}
+                {/* {
+                  !isAdmin === "user" && (
+                    <>
+                      <li>
+                        <NavLink to="/dashboard/adminHome">
+                          <FaHouseMedical />
+                          Admin Home
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink to="/dashboard/users">
+                          <FaUsers />
+                          All Users
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink to="/dashboard/allArticlesAdmin">
+                          <FaRegNewspaper />
+                          All Articles
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink to="/dashboard/payment-history">
+                          <FaRegNewspaper />
+                          All payment history
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink to="/dashboard/allPublisher">
+                          <FaGalacticRepublic />
+                          Add Publisher
+                        </NavLink>
+                      </li>
+                    </>
+                  )
+                } */}
                 <div className="min-h-52"></div>
                 <li>
                   <NavLink to="/">

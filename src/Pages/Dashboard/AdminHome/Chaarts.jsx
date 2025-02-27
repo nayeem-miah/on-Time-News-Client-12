@@ -2,6 +2,7 @@
 import { useQuery } from "@tanstack/react-query";
 import Chart from "react-google-charts";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import Loader from "../../../Compoents/EmptyState/loader";
 
 export const options = {
   // title: "Publication Article Distribution",
@@ -25,7 +26,7 @@ export const options = {
 
 const Charts = () => {
   const axiosSecure = useAxiosSecure();
-  const { data: allPublishers = [] } = useQuery({
+  const { data: allPublishers = [], isLoading } = useQuery({
     queryKey: ["articles"],
     queryFn: async () => {
       const res = await axiosSecure.get("/articles");
@@ -39,7 +40,7 @@ const Charts = () => {
   }, {});
 
   const data = [["Publisher", "Number of Articles"], ...Object.entries(publisherData)];
-
+  if (isLoading) return <Loader></Loader>
   return (
     <div className="bg-white p-4 shadow-lg rounded-lg">
       <h2 className="text-xl font-semibold text-center mb-4 text-purple-500">Publication Article Distribution</h2>

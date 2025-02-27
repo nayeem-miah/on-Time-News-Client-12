@@ -7,16 +7,19 @@ import "swiper/css";
 import "swiper/css/pagination";
 // import required modules
 import { Pagination } from "swiper/modules";
+import Loader from "../../../Compoents/EmptyState/loader";
 
 const AllPublisher = () => {
   const axiosSecure = useAxiosSecure();
-  const { data: publisher = [] } = useQuery({
+  const { data: publisher = [], isLoading } = useQuery({
     queryKey: ["publisher"],
     queryFn: async () => {
       const res = await axiosSecure.get("/publisher");
       return res.data;
     },
   });
+
+  if (isLoading) return <Loader></Loader>
   return (
     <div>
       <div className="md:w-4/12 mx-auto text-center my-8">

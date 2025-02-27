@@ -55,7 +55,7 @@ const AddArticles = () => {
         <Loader> </Loader>
       ) : (
         <section className="max-w-full py-10 p-6 mx-auto my-10 mt-20  rounded-md shadow-md ">
-          <h2 className="text-center my-10 text-3xl font-semibold text-gray-700 capitalize dark:text-white">
+          <h2 className="text-center my-10 text-3xl font-semibold text-purple-500 capitalize ">
             Add Publisher
           </h2>
           <Helmet>
