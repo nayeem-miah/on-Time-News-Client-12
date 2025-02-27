@@ -36,7 +36,7 @@ const AllUsers = () => {
         <Loader></Loader>
       ) : (
         <div className="">
-          <div className="flex justify-evenly my-4 mt-1 lg:mt-20">
+          <div className="flex justify-evenly my-4 mt-1 ">
             <h2 className="text-3xl">All Users</h2>
             <h2 className="text-3xl">
               Total Users : (
@@ -56,7 +56,7 @@ const AllUsers = () => {
               </thead>
               <tbody>
                 {users.map((user, i) => (
-                  <tr key={user._id} className="bg-base-200">
+                  <tr key={user._id} className="bg-gray-800 hover:bg-gray-600">
                     <th>{(i = i + 1)}</th>
                     <td>{user.name}</td>
                     <td>{user.email}</td>

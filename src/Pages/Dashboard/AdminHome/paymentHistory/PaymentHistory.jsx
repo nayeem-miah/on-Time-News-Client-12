@@ -12,7 +12,7 @@ const PaymentHistory = () => {
             return res.data;
         }
     })
-    // console.log("PaymentHistory", PaymentHistory);
+
     if (isLoading) return <Loader />
     return (
         <div>

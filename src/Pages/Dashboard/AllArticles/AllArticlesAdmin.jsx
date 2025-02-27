@@ -85,8 +85,8 @@ const AllArticlesAdmin = () => {
       {loading ? (
         <Loader></Loader>
       ) : (
-        <div className="my-10">
-          <div className="flex justify-evenly my-4 mt-1 lg:mt-20">
+        <div className="my-5">
+          <div className="flex justify-evenly my-4 mt-1 ">
             <h2 className="text-3xl">All Articles</h2>
             <h2 className="text-3xl">Total Articles : {AllArticles.length}</h2>
           </div>
@@ -108,7 +108,7 @@ const AllArticlesAdmin = () => {
               </thead>
               <tbody>
                 {AllArticles.map((item, i) => (
-                  <tr key={item._id}>
+                  <tr key={item._id} className="bg-gray-800 hover:bg-gray-600">
                     {/* <td> {(i = i + 1)}</td> */}
                     <td>{item.title}</td>
                     <td>
