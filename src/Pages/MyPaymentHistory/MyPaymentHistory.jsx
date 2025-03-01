@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../Hooks/useAuth";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import Loader from "../../Compoents/EmptyState/loader";
+import EmptyState from "../../Compoents/EmptyState/EmptyState";
 
 function MyPaymentHistory() {
     const axiosPublic = useAxiosPublic()
@@ -14,16 +15,20 @@ function MyPaymentHistory() {
             return res.data;
         }
     })
-    console.log(paymentHistory);
-
     if (isLoading) return <Loader />
+
+    if (paymentHistory?.length === 0) return <div className="pt-20 min-h-[calc(100vh-180px)]"> <EmptyState
+        message={"No Articles  Available!"}
+        address={"/"}
+        label={"Go to Home"}
+        address2={"/allArticles"}
+        label2={"All Articles"}
+    ></EmptyState></div>
     return (
         <div className="pt-20 min-h-[calc(100vh-180px)]">
-            {/* <h3 className="text-center text-3xl text-purple-500">
-                my payment history
-            </h3> */}
-
             <div className="overflow-x-auto pb-9 ">
+
+
                 <table className="table w-full">
                     {/* head */}
                     <thead>

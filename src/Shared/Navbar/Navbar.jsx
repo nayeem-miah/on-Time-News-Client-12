@@ -25,7 +25,7 @@ const Navbar = () => {
           timer: 2000,
         });
         <NavLink to={"/"}></NavLink>;
-        // console.log(result.user);
+        setOpen(false);
       })
       .catch((error) => {
         console.error(error);
