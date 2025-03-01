@@ -1,9 +1,10 @@
+/* eslint-disable no-unused-vars */
 import { useState, useEffect, useRef } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Typewriter } from "react-simple-typewriter";
 import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
-import { FaEdit } from "react-icons/fa";
+import { FaEdit, FaMoneyCheckAlt, FaSignOutAlt } from "react-icons/fa";
 import useAdmin from "../../Hooks/useAdmin";
 import News from "../../assets/logo.jpg";
 
@@ -24,7 +25,7 @@ const Navbar = () => {
           timer: 2000,
         });
         <NavLink to={"/"}></NavLink>;
-        console.log(result.user);
+        // console.log(result.user);
       })
       .catch((error) => {
         console.error(error);
@@ -166,31 +167,42 @@ const Navbar = () => {
           {open && (
             <div
               ref={modalRef}
-              className="absolute text-center flex flex-col justify-center items-center gap-4 shadow-lg bg-white dark:bg-[#1a1a1a] px-8 py-6 top-16 dark:text-white z-50 rounded-lg border border-gray-300 dark:border-gray-700"
+              className="absolute top-16 z-50 flex flex-col items-center gap-5 rounded-lg shadow-md bg-white dark:bg-gray-900 p-6 border border-gray-200 dark:border-gray-700 w-72"
             >
+              {/* Profile Image */}
               <img
-                src={user?.photoURL}
-                className="w-24 h-24 mx-auto rounded-full dark:bg-gray-500 border-4 border-purple-500"
+                src={user?.photoURL || "/default-avatar.png"}
+                alt="User Profile"
+                className="w-20 h-20 rounded-full border-2 border-purple-500 dark:bg-gray-700"
               />
-              <div className="flex flex-col items-center">
-                <p className="text-lg font-semibold">{user?.displayName}</p>
-                <Link to={"/updateUserProfile"} className="mt-1 text-purple-500 hover:text-purple-700">
-                  <FaEdit className="text-xl" />
+
+              {/* User Info */}
+              <div className="text-center">
+                <p className="text-lg font-semibold text-gray-900 dark:text-white">{user?.displayName || "User Name"}</p>
+                <Link to="/updateUserProfile" className="text-gray-600 dark:text-gray-300 text-sm hover:text-blue-500 transition">
+                  <p>{user?.email || "user@example.com"}</p>
+                  <div className="flex items-center justify-center gap-1 mt-1">
+                    <FaEdit className="text-blue-500" />
+                    <span className="hover:underline">Edit Profile</span>
+                  </div>
                 </Link>
               </div>
-              <p className="text-md font-medium text-gray-700 dark:text-gray-300">{user?.email}</p>
-              <Link to={"/my-payment-history"}>
-                <button className="bg-gradient-to-r from-green-400 to-blue-500 px-4 py-2 text-white font-semibold rounded shadow-md hover:from-green-500 hover:to-blue-600 transition-all duration-300">
-                  My payment history
-                </button>
+
+              {/* Payment History */}
+              <Link
+                to="/my-payment-history"
+                className="flex items-center gap-2 text-gray-700 dark:text-gray-300 text-sm hover:text-blue-600 transition"
+              >
+                <FaMoneyCheckAlt className="text-green-500" />
+                <span>My Payment History</span>
               </Link>
-              {/* <span className="px-4 py-1 text-xs font-bold text-white bg-purple-600 rounded-md">
-                  {isAdmin ? "Admin" : "Normal User"}
-                </span> */}
+
+              {/* Logout Button */}
               <button
                 onClick={handleLogout}
-                className="px-4 py-2 bg-gradient-to-r bg-red-500 text-white font-semibold rounded shadow-md w-full transition-all duration-300"
+                className="flex items-center gap-2 text-red-600 hover:text-red-700 transition font-medium text-sm"
               >
+                <FaSignOutAlt />
                 Logout
               </button>
             </div>

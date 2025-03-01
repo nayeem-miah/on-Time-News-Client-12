@@ -17,7 +17,7 @@ export default function RecentArticles() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    console.log(AllArticles);
+    // console.log(AllArticles);
 
     if (loading) return <Loader />
     return (

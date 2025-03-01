@@ -8,7 +8,7 @@ const Modal = () => {
   const handleDecline = async e => {
     e.preventDefault();
     const decline = e.target.decline.value;
-    console.log(decline);
+    // console.log(decline);
     // const newDecline = {
     //   decline: {decline},
     // };

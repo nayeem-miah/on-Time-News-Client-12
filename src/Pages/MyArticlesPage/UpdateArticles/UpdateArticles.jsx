@@ -33,8 +33,7 @@ const UpdateArticles = () => {
     formData.append("image", image);
     try {
       const { data } = await axios.post(
-        `https://api.imgbb.com/1/upload?key=${
-          import.meta.env.VITE_IMAGE_HOSTING_KEY
+        `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMAGE_HOSTING_KEY
         }`,
         formData
       );
@@ -48,20 +47,20 @@ const UpdateArticles = () => {
           image: data.data.display_url,
           email,
           photo,
-          displayName,viewCount
+          displayName, viewCount
         };
         const articlesResponce = await axiosSecure.patch(
           `/updateArticles/${_id}`,
           newData
         );
-        console.log(articlesResponce);
+        // console.log(articlesResponce);
         if (articlesResponce.data.modifiedCount > 0) {
           toast.success(`articles updated Successfully 🔥`);
           navigate("/myArticles");
         }
       }
     } catch (err) {
-      console.log(err);
+      console.error(err.message);
     }
   };
 

@@ -10,7 +10,7 @@ const GoogleLogin = () => {
   const handleGoogleLogin = () => {
     googleLogin()
       .then(result => {
-        console.log(result.user);
+        // console.log(result.user);
         const userInfo = {
           email: result.user?.email,
           name: result.user?.displayName,
@@ -18,12 +18,12 @@ const GoogleLogin = () => {
         };
         // post database google email
         axiosPublic.post("/users", userInfo)
-        .then(res => {
-          console.log(res.data);
+          .then(res => {
+            console.log(res.data);
 
-          toast.success("google LOgin Successfully");
-          navigate(location?.state ? location.state : "/");
-        });
+            toast.success("google LOgin Successfully");
+            navigate(location?.state ? location.state : "/");
+          });
       })
       .catch(error => {
         toast.error(error.massage);

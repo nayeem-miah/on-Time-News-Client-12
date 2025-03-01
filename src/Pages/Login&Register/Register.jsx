@@ -16,7 +16,7 @@ const Register = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [loading, setLoading] = useState(true);
-  
+
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
@@ -30,7 +30,7 @@ const Register = () => {
     const photo = form.photo.value;
     const name = form.name.value;
     const info = { email, password, photo, name };
-    console.log(info);
+    // console.log(info);
 
     if (password.length < 6) {
       setError("password must be 6 characters");
@@ -53,7 +53,7 @@ const Register = () => {
 
     createUser(email, password)
       .then(result => {
-        console.log(result.user);
+        // console.log(result.user);
         updateUserProfile(name, photo).then(() => {
           // create user entry in the database
           const userInfo = {

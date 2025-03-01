@@ -90,20 +90,20 @@ const CheckoutForm = ({ totalPrice }) => {
         email: user?.email,
         transactionId: paymentIntent.id,
         date: new Date().toLocaleDateString(),
-        totalPrice : totalPrice
+        totalPrice: totalPrice
       };
       // console.log("paymentInfo", paymentInfo);
 
       try {
-      const res=await axiosPublic.post("/payment", paymentInfo);
-     if(res.data.insertedId){
-       toast.success(`${totalPrice}$ payment successfully`)
-       navigate('/')
-     }
+        const res = await axiosPublic.post("/payment", paymentInfo);
+        if (res.data.insertedId) {
+          toast.success(`${totalPrice}$ payment successfully`)
+          navigate('/')
+        }
 
-      
+
       } catch (error) {
-        console.log(error);
+        console.error(error);
       }
       setProcessing(false);
     }
@@ -142,7 +142,7 @@ const CheckoutForm = ({ totalPrice }) => {
             `Pay $(${totalPrice})`
           )}
         </button>
-        {}
+        { }
         {cardError && <p className="text-red-600 ml-10">{cardError}</p>}
       </form>
     </>

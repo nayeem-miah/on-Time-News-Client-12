@@ -69,7 +69,7 @@ const AddArticles = () => {
       }
     } catch (err) {
       toast.error(err)
-      console.log(err);
+      console.error(err);
     }
   };
 
