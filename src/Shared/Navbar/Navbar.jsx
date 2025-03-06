@@ -95,7 +95,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="navbar bg-base-300 shadow-2xl fixed z-10 max-w-screen-xl mx-auto border-b-2">
+    <div className="navbar bg-gray-800 text-white shadow-2xl fixed z-10 max-w-screen-xl mx-auto ">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -116,7 +116,7 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-300 absolute z-50 font-bold rounded-box w-52"
+            className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-gray-800 text-white hover:bg-gray-700 absolute z-50 font-bold rounded-box w-52"
           >
             {nabLinks}
           </ul>

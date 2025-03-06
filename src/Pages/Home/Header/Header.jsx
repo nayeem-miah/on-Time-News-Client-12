@@ -16,7 +16,7 @@ import Loader from "../../../Compoents/EmptyState/loader";
 const Header = () => {
   const axiosPublic = useAxiosPublic();
   const { user } = useAuth();
-  const { data: allArticles = [],isLoading } = useQuery({
+  const { data: allArticles = [], isLoading } = useQuery({
     queryKey: ["allArticles"],
     queryFn: async () => {
       const res = axiosPublic.get("/articlesCount");
@@ -24,7 +24,7 @@ const Header = () => {
     },
   });
 
-  if(isLoading) return <Loader></Loader>
+  if (isLoading) return <Loader></Loader>
 
   return (
     <Swiper
@@ -44,7 +44,7 @@ const Header = () => {
     >
       {allArticles.map(article => (
         <SwiperSlide key={article._id}>
-          <div className="w-full my-10 mt-16 flex gap-3 bg-base-300 rounded ">
+          <div className="w-full my-10 mt-16 flex gap-3  rounded ">
             <div
               className="hero min-h-[170px] h-[500px]"
               style={{
