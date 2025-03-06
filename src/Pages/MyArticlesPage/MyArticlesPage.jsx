@@ -63,12 +63,12 @@ const MyArticlesPage = () => {
           <Helmet>
             <title>OnTimeNews | My Artcle Page </title>
           </Helmet>
-          <div className="overflow-x-auto w-full mt-20">
+          <div className="overflow-x-auto w-full mt-20 text-white">
             {myArticles.length > 0 ? (
               <table className="table">
                 {/* head */}
                 <thead>
-                  <tr className="text-xs font-bold border-b-2">
+                  <tr className="text-xs text-white font-bold border-b-2">
                     <th>serial no</th>
                     <th>article title</th>
                     <th>status</th>
@@ -89,14 +89,14 @@ const MyArticlesPage = () => {
                       </th>
                       <th>
                         <Link to={`/articlesDetails/${item._id}`}>
-                          <button className="btn bg-purple-500 text-black hover:text-white">
+                          <button className="btn bg-purple-500 ">
                             details
                           </button>
                         </Link>
                       </th>
                       <th>
                         <Link to={`/updateArticles/${item._id}`}>
-                          <button className="btn bg-purple-500 text-black hover:text-white">
+                          <button className="btn bg-purple-500 ">
                             update
                           </button>
                         </Link>
