@@ -76,14 +76,14 @@ const AddArticles = () => {
   return (
     <div>
       <section className="max-w-full py-10 p-6 mx-auto  rounded-md shadow-md ">
-        <h2 className="text-center my-10 text-3xl font-semibold text-gray-700 capitalize dark:text-white">
+        <h2 className="text-center my-10 text-3xl font-semibold  capitalize text-white">
           Add Articles
         </h2>
 
         <form onSubmit={handleSubmit}>
-          <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2 mb-6">
+          <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2 mb-6 text-white">
             <div>
-              <label className="text-gray-700 dark:text-gray-200">
+              <label className=" ">
                 Title
               </label>
               <input
@@ -91,20 +91,20 @@ const AddArticles = () => {
                 name="title"
                 required
                 placeholder="title"
-                className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                className="block w-full px-4 py-2 mt-2  bg-white border border-gray-200 rounded-md    focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
               />
             </div>
 
             <div className="">
               <label
-                className="text-gray-700 dark:text-gray-200"
+                className=" "
                 htmlFor="category"
               >
                 Select publisher
               </label>
               <select
                 type="text"
-                className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                className="block w-full px-4 py-2 mt-2  bg-white border border-gray-200 rounded-md    focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
                 placeholder="select publisher"
                 name="publisher"
                 required
@@ -142,14 +142,14 @@ const AddArticles = () => {
 
             <div className="">
               <label
-                className="text-gray-700 dark:text-gray-200"
+                className=" "
                 htmlFor="category"
               >
                 Tags
               </label>
               <select
                 type="text"
-                className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                className="block w-full px-4 py-2 mt-2  bg-white border border-gray-200 rounded-md    focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
                 placeholder="select tags"
                 name="tags"
                 required
@@ -179,18 +179,18 @@ const AddArticles = () => {
             </div>
 
             <div className="mt-2">
-              <label className="text-gray-700 dark:text-gray-200 ">
+              <label className="  ">
                 Chose Image
               </label>
               <input
                 type="file"
                 name="image"
-                className="file-input  h-10 file-input-bordered file-input-error w-full max-w-full items-center  text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                className="file-input  h-10 file-input-bordered file-input-error w-full max-w-full items-center   bg-white border border-gray-200 rounded-md    focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
               />
             </div>
           </div>
-          <div>
-            <label className="text-gray-700 dark:text-gray-200 ">
+          <div className="text-white">
+            <label className="  ">
               description
             </label>
             <textarea
@@ -198,7 +198,7 @@ const AddArticles = () => {
               name="description"
               placeholder="description"
               required
-              className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+              className="block w-full px-4 py-2 mt-2  bg-white border border-gray-200 rounded-md    focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
             />
           </div>
           <div className="mt-6 w-full">
