@@ -61,11 +61,11 @@ const MyArticlesPage = () => {
         <div className="min-h-[calc(100vh-180px)] ">
           <h3>My Articles Page:( {myArticles.length})</h3>
           <Helmet>
-            <title>OnTimeNews | My Artcle Page </title>
+            <title>OnTimeNews | My Articles Page </title>
           </Helmet>
-          <div className="overflow-x-auto w-full mt-20 text-white">
+          <div className="overflow-x-auto w-full mt-20 text-white mb-20">
             {myArticles.length > 0 ? (
-              <table className="table">
+              <table className="table ">
                 {/* head */}
                 <thead>
                   <tr className="text-xs text-white font-bold border-b-2">

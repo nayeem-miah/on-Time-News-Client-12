@@ -64,7 +64,7 @@ const AddArticles = () => {
           <form onSubmit={handleSubmit}>
             <div className=" gap-6 mt-4 sm:grid-cols-2 mb-6">
               <div>
-                <label className="text-gray-700 dark:text-gray-200">
+                <label className="text-white">
                   publisher name
                 </label>
                 <input
@@ -76,7 +76,7 @@ const AddArticles = () => {
                 />
               </div>
               <div className="mt-2">
-                <label className="text-gray-700 dark:text-gray-200 ">
+                <label className="text-white ">
                   Chose Image
                 </label>
                 <input

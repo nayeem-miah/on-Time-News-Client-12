@@ -20,11 +20,11 @@ const PaymentHistory = () => {
                 payment history : ({PaymentHistory?.length})
             </h3>
 
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto text-white">
                 <table className="table w-full">
                     {/* head */}
                     <thead>
-                        <tr className="text-xs font-bold border-b-2">
+                        <tr className="text-xs font-bold border-b-2 text-white">
                             <th>serial no</th>
                             <th>author info</th>
                             <th>transactionId</th>
