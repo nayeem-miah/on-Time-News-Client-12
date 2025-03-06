@@ -43,10 +43,10 @@ const AllUsers = () => {
               <span className=""> {users.length}</span>
             </h2>
           </div>
-          <div className="overflow-x-auto">
+          <div className="overflow-x-auto text-white">
             <table className="table w-full">
               <thead>
-                <tr>
+                <tr className="text-white">
                   <th>sl</th>
                   <th>Name</th>
                   <th>email</th>
