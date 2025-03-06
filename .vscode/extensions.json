@@ -1,5 +1,7 @@
 {
     "recommendations": [
-        "burkeholland.simple-react-snippets"
+        "myml.vscode-markdown-plantuml-preview",
+        "esbenp.prettier-vscode",
+        "jebbs.plantuml"
     ]
 }
