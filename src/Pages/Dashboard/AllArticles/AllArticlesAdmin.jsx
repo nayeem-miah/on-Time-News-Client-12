@@ -90,11 +90,11 @@ const AllArticlesAdmin = () => {
             <h2 className="text-3xl text-purple-600">All Articles</h2>
             <h2 className="text-3xl text-purple-600">Total Articles : {AllArticles.length}</h2>
           </div>
-          <div className="overflow-x-auto">
+          <div className="overflow-x-auto text-white">
             <table className="table w-full">
               {/* head */}
               <thead>
-                <tr className="text-xs font-bold border-b-2">
+                <tr className="text-xs font-bold border-b-2 text-white">
                   {/* <th>serial no</th>   */}
                   <th>article title</th>
                   <th>author info</th>

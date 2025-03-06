@@ -26,11 +26,11 @@ export default function RecentArticles() {
                 <div className="flex justify-evenly my-4 mt-1 ">
                     <h2 className="text-3xl text-center text-purple-500">Recent Articles</h2>
                 </div>
-                <div className="overflow-x-auto">
+                <div className="overflow-x-auto text-white">
                     <table className="table w-full">
                         {/* head */}
                         <thead>
-                            <tr className="text-xs font-bold border-b-2">
+                            <tr className="text-xs font-bold border-b-2 text-white">
                                 <th>serial no</th>
                                 <th>article title</th>
                                 <th>author info</th>
